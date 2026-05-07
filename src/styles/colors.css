@@ -1,12 +1,13 @@
 html {
   --black: #000;
-  --dark-gray: #080808;
+  --dark-gray-15: #080808;
+  --gray: #888;
   --white: #fff;
 
   --pale-light-blue: #a4cefe;
   --pale-light-purple: #d8b8ff;
 
-  --color-app-bg: var(--dark-gray);
+  --color-app-bg: var(--dark-gray-15);
   --color-text: var(--white);
   --color-link: var(--pale-light-blue);
   --color-link-visited: var(--pale-light-purple);
