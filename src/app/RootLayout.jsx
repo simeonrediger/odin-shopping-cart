@@ -1,3 +1,9 @@
 export default function RootLayout() {
-  return <></>;
+  return (
+    <>
+      <header>
+        <h1>Shop</h1>
+      </header>
+    </>
+  );
 }
