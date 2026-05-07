@@ -1,6 +1,8 @@
 html {
   --black: #000;
   --dark-gray-15: #080808;
+  --dark-gray-10: #333;
+  --dark-gray-8: #444;
   --gray: #888;
   --white: #fff;
 
@@ -11,4 +13,9 @@ html {
   --color-text: var(--white);
   --color-link: var(--pale-light-blue);
   --color-link-visited: var(--pale-light-purple);
+
+  --color-navbar-bg: var(--dark-gray-10);
+  --color-navbar-bg-hover: var(--dark-gray-8);
+  --color-navbar-link: var(--white);
+  --color-navbar-border-focus: var(--pale-light-blue);
 }
