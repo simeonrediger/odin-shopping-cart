@@ -1,4 +1,4 @@
-import RootLayout from './RootLayout.jsx';
+import RootLayout from '../app/RootLayout.jsx';
 
 const routes = [
   {
