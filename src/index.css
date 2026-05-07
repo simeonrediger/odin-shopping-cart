@@ -1,0 +1,10 @@
+@import './styles/reset.css';
+@import './styles/colors.css';
+@import './styles/base.css';
+
+#root {
+  background-color: var(--color-app-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  padding: 1rem 2rem;
+}

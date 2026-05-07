@@ -1,0 +1,13 @@
+html {
+  --black: #000;
+  --dark-gray: #181818;
+  --white: #fff;
+
+  --pale-light-blue: #a4cefe;
+  --pale-light-purple: #d8b8ff;
+
+  --color-app-bg: var(--dark-gray);
+  --color-text: var(--white);
+  --color-link: var(--pale-light-blue);
+  --color-link-visited: var(--pale-light-purple);
+}
