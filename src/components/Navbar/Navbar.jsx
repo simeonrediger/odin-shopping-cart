@@ -6,13 +6,19 @@ export default function Navbar() {
     <nav>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <NavLink className={styles.link}>Home</NavLink>
+          <NavLink className={styles.link} to="/">
+            Home
+          </NavLink>
         </li>
         <li className={styles.item}>
-          <NavLink className={styles.link}>Shop</NavLink>
+          <NavLink className={styles.link} to="shop">
+            Shop
+          </NavLink>
         </li>
         <li className={styles.item}>
-          <NavLink className={styles.link}>Cart</NavLink>
+          <NavLink className={styles.link} to="cart">
+            Cart
+          </NavLink>
         </li>
       </ul>
     </nav>
