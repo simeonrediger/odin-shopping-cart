@@ -6,6 +6,7 @@ html {
   --gray: #888;
   --white: #fff;
 
+  --pale-dark-blue: #448;
   --pale-light-blue: #a4cefe;
   --pale-light-purple: #d8b8ff;
 
@@ -17,5 +18,6 @@ html {
   --color-navbar-bg: var(--dark-gray-10);
   --color-navbar-bg-hover: var(--dark-gray-8);
   --color-navbar-link: var(--white);
+  --color-navbar-link-active: var(--pale-dark-blue);
   --color-navbar-border-focus: var(--pale-light-blue);
 }

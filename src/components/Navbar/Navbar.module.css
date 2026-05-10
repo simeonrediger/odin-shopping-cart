@@ -32,3 +32,7 @@
   border-color: var(--color-navbar-border-focus);
   outline: none;
 }
+
+.link.active {
+  background-color: var(--color-navbar-link-active);
+}
