@@ -7,7 +7,7 @@ export default function ProductCard({ title, price, rating, image }) {
 
   return (
     <article className={styles.card}>
-      <img src={image} alt={title} />
+      <img className={styles.image} src={image} alt={title} />
       <h2 className={styles.name}>{title}</h2>
       <p>{formattedPrice}</p>
       <p>

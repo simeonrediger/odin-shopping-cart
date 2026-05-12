@@ -4,6 +4,11 @@
   padding: 1rem;
 }
 
+.image {
+  max-height: 10rem;
+  max-width: 10rem;
+}
+
 .name {
   font-size: inherit;
 }
