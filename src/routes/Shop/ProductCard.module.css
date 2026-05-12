@@ -16,6 +16,9 @@
 
 .name {
   font-size: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .stars {
