@@ -2,6 +2,7 @@ import styles from './ProductCard.module.css';
 
 export default function ProductCard({ title, price, rating, image }) {
   const formattedPrice = formatPrice(price);
+  const formattedRate = formatRate(rating.rate);
   const stars = getStarsString(rating.rate);
 
   return (
@@ -10,7 +11,7 @@ export default function ProductCard({ title, price, rating, image }) {
       <h2 className={styles.name}>{title}</h2>
       <p>{formattedPrice}</p>
       <p>
-        {rating.rate} {stars} ({rating.count})
+        {formattedRate} {stars} ({rating.count})
       </p>
     </article>
   );
@@ -19,6 +20,11 @@ export default function ProductCard({ title, price, rating, image }) {
 function formatPrice(price) {
   const [integerPart = '0', decimalPart = '0'] = String(price).split('.');
   return `$${integerPart}.${decimalPart?.padEnd(2, 0)}`;
+}
+
+function formatRate(rate) {
+  const [integerPart = '0', decimalPart = '0'] = String(rate).split('.');
+  return `${integerPart}.${decimalPart}`;
 }
 
 function getStarsString(starAmount) {
