@@ -1,14 +1,18 @@
+import { Link } from 'react-router-dom';
+
 import styles from './ProductCard.module.css';
 
-export default function ProductCard({ title, price, rating, image }) {
+export default function ProductCard({ id, title, price, rating, image }) {
   const formattedPrice = formatPrice(price);
   const formattedRate = formatRate(rating.rate);
   const stars = getStarsString(rating.rate);
 
   return (
     <article className={styles.card}>
-      <img className={styles.image} src={image} alt={title} />
-      <h2 className={styles.name}>{title}</h2>
+      <Link to={String(id)} className={styles.link}>
+        <img className={styles.image} src={image} alt={title} />
+        <h2 className={styles.name}>{title}</h2>
+      </Link>
       <p>
         {formattedRate} <span className={styles.stars}>{stars}</span> (
         {rating.count})

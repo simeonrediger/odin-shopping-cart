@@ -2,9 +2,18 @@
   background-color: var(--color-product-card-bg);
   border-radius: 1rem;
   padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
 
   display: flex;
   flex-direction: column;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-product-card-text);
 }
 
 .image {
@@ -15,6 +24,7 @@
 }
 
 .name {
+  color: var(--color-product-card-text);
   font-size: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
