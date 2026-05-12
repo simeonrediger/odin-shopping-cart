@@ -11,7 +11,9 @@ export default function ProductCard({ id, title, price, rating, image }) {
     <article className={styles.card}>
       <Link to={String(id)} className={styles.link}>
         <img className={styles.image} src={image} alt={title} />
-        <h2 className={styles.name}>{title}</h2>
+        <h2 className={styles.name} title={title}>
+          {title}
+        </h2>
       </Link>
       <p>
         {formattedRate} <span className={styles.stars}>{stars}</span> (
