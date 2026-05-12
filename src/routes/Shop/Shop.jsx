@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import styles from './Shop.module.css';
 import ProductCard from './ProductCard.jsx';
 
 export default function Shop() {
@@ -18,7 +19,7 @@ export default function Shop() {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles.products}>
       {products.map(product => (
         <li key={product.id}>
           <ProductCard {...product} />
