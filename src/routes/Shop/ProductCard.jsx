@@ -1,6 +1,8 @@
+import styles from './ProductCard.module.css';
+
 export default function ProductCard({ title, price, rating, image }) {
   return (
-    <article>
+    <article className={styles.card}>
       <img src={image} alt={title} />
       <h2>{title}</h2>
       <p>${price}</p>
