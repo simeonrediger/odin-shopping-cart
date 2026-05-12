@@ -11,7 +11,8 @@ export default function ProductCard({ title, price, rating, image }) {
       <h2 className={styles.name}>{title}</h2>
       <p>{formattedPrice}</p>
       <p>
-        {formattedRate} {stars} ({rating.count})
+        {formattedRate} <span className={styles.stars}>{stars}</span> (
+        {rating.count})
       </p>
     </article>
   );

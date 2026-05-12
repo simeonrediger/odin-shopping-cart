@@ -10,6 +10,7 @@ html {
   --pale-dark-blue: #448;
   --pale-light-blue: #a4cefe;
   --pale-light-purple: #d8b8ff;
+  --gold: #edc213;
 
   --color-app-bg: var(--dark-gray-15);
   --color-text: var(--white);
@@ -23,4 +24,5 @@ html {
   --color-navbar-border-focus: var(--pale-light-blue);
 
   --color-product-card-bg: var(--dark-gray-12);
+  --color-rating-stars: var(--gold);
 }
