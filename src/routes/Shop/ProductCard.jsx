@@ -9,11 +9,11 @@ export default function ProductCard({ title, price, rating, image }) {
     <article className={styles.card}>
       <img className={styles.image} src={image} alt={title} />
       <h2 className={styles.name}>{title}</h2>
-      <p>{formattedPrice}</p>
       <p>
         {formattedRate} <span className={styles.stars}>{stars}</span> (
         {rating.count})
       </p>
+      <p>{formattedPrice}</p>
     </article>
   );
 }
