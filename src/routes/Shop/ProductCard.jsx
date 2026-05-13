@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCard.module.css';
+import QuantityControls from './QuantityControls.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
   const formattedPrice = formatPrice(price);
@@ -20,6 +21,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
         {rating.count})
       </p>
       <p>{formattedPrice}</p>
+      <QuantityControls />
       <button className={styles.addToCartButton}>Add to cart</button>
     </article>
   );
