@@ -8,6 +8,7 @@ html {
   --white: #fff;
 
   --pale-dark-blue: #448;
+  --pale-blue: #44a;
   --pale-light-blue: #a4cefe;
   --pale-light-purple: #d8b8ff;
   --gold: #edc213;
@@ -26,4 +27,6 @@ html {
   --color-product-card-bg: var(--dark-gray-12);
   --color-product-card-text: var(--white);
   --color-rating-stars: var(--gold);
+  --color-add-to-cart-button-bg: var(--pale-blue);
+  --color-add-to-cart-button-text: var(--white);
 }

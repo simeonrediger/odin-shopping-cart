@@ -34,3 +34,10 @@
 .stars {
   color: var(--color-rating-stars);
 }
+
+.addToCartButton {
+  background-color: var(--color-add-to-cart-button-bg);
+  border-radius: 0.375rem;
+  color: var(--color-add-to-cart-button-text);
+  padding: 0.25rem 0.5rem;
+}
