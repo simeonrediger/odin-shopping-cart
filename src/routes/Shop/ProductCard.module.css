@@ -2,6 +2,9 @@
   background-color: var(--color-product-card-bg);
   border-radius: 1rem;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .link {
