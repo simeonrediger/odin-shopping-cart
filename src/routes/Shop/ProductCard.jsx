@@ -26,8 +26,11 @@ export default function ProductCard({ id, title, price, rating, image }) {
         </h2>
       </Link>
       <p className={styles.ratings}>
-        {formattedRate} <span className={styles.stars}>{stars}</span> (
-        {rating.count})
+        {formattedRate}{' '}
+        <span className={styles.stars} role="img" aria-label="stars">
+          {stars}
+        </span>{' '}
+        ({rating.count})
       </p>
       <p className={styles.price}>{formattedPrice}</p>
       <QuantityControls
