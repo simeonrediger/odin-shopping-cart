@@ -1,5 +1,7 @@
 import { useId } from 'react';
 
+import styles from './QuantityControls.module.css';
+
 export default function QuantityControls() {
   const id = useId();
 
@@ -7,7 +9,7 @@ export default function QuantityControls() {
     <div>
       <label htmlFor={id}>Quantity</label>
       <button>&minus;</button>
-      <input id={id} inputMode="numeric" />
+      <input type="number" id={id} className={styles.quantityInput} />
       <button>+</button>
     </div>
   );
