@@ -1,12 +1,21 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './ProductCard.module.css';
 import QuantityControls from './QuantityControls.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
+  const [quantity, setQuantity] = useState(1);
+
   const formattedPrice = formatPrice(price);
   const formattedRate = formatRate(rating.rate);
   const stars = getStarsString(rating.rate);
+
+  function handleQuantityChange(newQuantity) {
+    const min = 0;
+    const max = 999;
+    setQuantity(Math.min(Math.max(min, newQuantity), max));
+  }
 
   return (
     <article className={styles.card}>
@@ -21,7 +30,11 @@ export default function ProductCard({ id, title, price, rating, image }) {
         {rating.count})
       </p>
       <p className={styles.price}>{formattedPrice}</p>
-      <QuantityControls className={styles.quantityControls} />
+      <QuantityControls
+        className={styles.quantityControls}
+        quantity={quantity}
+        onChange={handleQuantityChange}
+      />
       <button className={styles.addToCartButton}>Add to cart</button>
     </article>
   );
