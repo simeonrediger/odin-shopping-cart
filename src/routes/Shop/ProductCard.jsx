@@ -21,7 +21,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
         {rating.count})
       </p>
       <p>{formattedPrice}</p>
-      <QuantityControls />
+      <QuantityControls className={styles.quantityControls} />
       <button className={styles.addToCartButton}>Add to cart</button>
     </article>
   );

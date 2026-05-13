@@ -38,6 +38,10 @@
   color: var(--color-rating-stars);
 }
 
+.quantityControls {
+  align-self: center;
+}
+
 .addToCartButton {
   background-color: var(--color-add-to-cart-button-bg);
   border-radius: 0.375rem;
