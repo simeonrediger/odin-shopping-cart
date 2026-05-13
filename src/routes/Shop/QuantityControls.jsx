@@ -6,11 +6,13 @@ export default function QuantityControls() {
   const id = useId();
 
   return (
-    <div>
-      <label htmlFor={id}>Quantity</label>
-      <button>&minus;</button>
+    <div className={styles.container}>
+      <label htmlFor={id} className={styles.label}>
+        Quantity
+      </label>
+      <button className={styles.decrementButton}>&minus;</button>
       <input type="number" id={id} className={styles.quantityInput} />
-      <button>+</button>
+      <button className={styles.incrementButton}>+</button>
     </div>
   );
 }

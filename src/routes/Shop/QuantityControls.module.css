@@ -1,3 +1,35 @@
+.container {
+  display: flex;
+}
+
+.label {
+  margin-inline-end: 0.5rem;
+}
+
+.decrementButton,
+.incrementButton {
+  background-color: var(--color-quantity-button-bg);
+  color: var(--color-quantity-button-text);
+  padding: 0.125rem;
+  width: 1.5rem;
+}
+
+.decrementButton {
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.incrementButton {
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+.quantityInput {
+  background-color: var(--color-quantity-input-bg);
+  color: var(--color-quantity-input-text);
+  padding: 0.125rem 0.375rem;
+  text-align: center;
+  width: 2.5rem;
+}
+
 /* Chrome, Safari, Edge */
 .quantityInput::-webkit-outer-spin-button,
 .quantityInput::-webkit-inner-spin-button {

@@ -1,6 +1,7 @@
 html {
   --black: #000;
   --dark-gray-15: #080808;
+  --dark-gray-14: #111;
   --dark-gray-12: #222;
   --dark-gray-10: #333;
   --dark-gray-8: #444;
@@ -27,6 +28,10 @@ html {
   --color-product-card-bg: var(--dark-gray-12);
   --color-product-card-text: var(--white);
   --color-rating-stars: var(--gold);
+  --color-quantity-button-bg: var(--dark-gray-8);
+  --color-quantity-button-text: var(--white);
+  --color-quantity-input-bg: var(--dark-gray-14);
+  --color-quantity-input-text: var(--white);
   --color-add-to-cart-button-bg: var(--pale-blue);
   --color-add-to-cart-button-text: var(--white);
 }
