@@ -49,6 +49,7 @@
 
 .quantityControls {
   align-self: center;
+  margin-block: 0.75rem;
 }
 
 .addToCartButton {
