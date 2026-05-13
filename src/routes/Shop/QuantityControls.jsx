@@ -24,7 +24,7 @@ export default function QuantityControls({
         type="number"
         id={id}
         className={styles.quantityInput}
-        value={quantity}
+        value={quantity.toString()}
         onChange={event => onChange(+event.target.value)}
       />
       <button
