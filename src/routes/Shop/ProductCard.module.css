@@ -30,12 +30,21 @@
   color: var(--color-product-card-text);
   font-size: inherit;
   overflow: hidden;
+  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.ratings {
+  align-self: center;
+}
+
 .stars {
   color: var(--color-rating-stars);
+}
+
+.price {
+  text-align: center;
 }
 
 .quantityControls {

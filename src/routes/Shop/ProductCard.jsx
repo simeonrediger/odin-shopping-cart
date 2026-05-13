@@ -16,11 +16,11 @@ export default function ProductCard({ id, title, price, rating, image }) {
           {title}
         </h2>
       </Link>
-      <p>
+      <p className={styles.ratings}>
         {formattedRate} <span className={styles.stars}>{stars}</span> (
         {rating.count})
       </p>
-      <p>{formattedPrice}</p>
+      <p className={styles.price}>{formattedPrice}</p>
       <QuantityControls className={styles.quantityControls} />
       <button className={styles.addToCartButton}>Add to cart</button>
     </article>
