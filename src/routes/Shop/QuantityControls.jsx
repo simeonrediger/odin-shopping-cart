@@ -1,5 +1,6 @@
 import { useId } from 'react';
 
+import '/src/styles/utilities.css';
 import styles from './QuantityControls.module.css';
 
 export default function QuantityControls({
@@ -27,6 +28,9 @@ export default function QuantityControls({
         value={quantity.toString()}
         onChange={event => onChange(+event.target.value)}
       />
+      <div className="visually-hidden" aria-live="polite">
+        Quantity {quantity}
+      </div>
       <button
         className={styles.incrementButton}
         onClick={() => onChange(quantity + 1)}
