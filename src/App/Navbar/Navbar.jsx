@@ -22,7 +22,9 @@ export default function Navbar({ cartItemCount }) {
         <li className={`${styles.item} ${styles.cartLink}`}>
           <NavLink className={getNavLinkClass} to="cart">
             Cart
-            <p className={styles.cartItemCount}>{cartItemCount}</p>
+            <p className={styles.cartItemCount}>
+              {cartItemCount < 100 ? cartItemCount : '99+'}
+            </p>
           </NavLink>
         </li>
       </ul>
