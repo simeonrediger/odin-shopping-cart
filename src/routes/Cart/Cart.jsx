@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 
+import styles from './Cart.module.css';
 import CartItem from './CartItem.jsx';
 
 export default function Cart() {
@@ -20,7 +21,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles.cartItemList}>
       {products
         .filter(product => cart.has(product.id))
         .map(product => (
