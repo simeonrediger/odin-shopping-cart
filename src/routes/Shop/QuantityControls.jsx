@@ -29,7 +29,7 @@ export default function QuantityControls({
         onChange={event => onChange(+event.target.value)}
       />
       <p className="visually-hidden" aria-live="polite">
-        Quantity {quantity}
+        {`Quantity ${quantity}`}
       </p>
       <button
         className={styles.incrementButton}
