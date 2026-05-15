@@ -7,6 +7,11 @@ import styles from './App.module.css';
 export default function App() {
   const [cart, setCart] = useState(new Map());
 
+  const cartItemCount = Array.from(cart.values()).reduce(
+    (count, quantity) => count + quantity,
+    0,
+  );
+
   function onAddToCart(itemId, quantity) {
     quantity += cart.get(itemId) ?? 0;
     const newCart = new Map([...cart]);
@@ -18,7 +23,7 @@ export default function App() {
     <div className={styles.root}>
       <header className={styles.header}>
         <h1>Shop</h1>
-        <Navbar />
+        <Navbar cartItemCount={cartItemCount} />
       </header>
       <main>
         <Outlet context={{ onAddToCart }} />

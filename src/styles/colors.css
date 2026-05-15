@@ -8,6 +8,7 @@ html {
   --gray: #888;
   --white: #fff;
 
+  --red: #a44;
   --pale-dark-blue: #448;
   --pale-blue: #44a;
   --pale-light-blue: #a4cefe;
@@ -24,6 +25,7 @@ html {
   --color-navbar-link: var(--white);
   --color-navbar-link-active: var(--pale-dark-blue);
   --color-navbar-border-focus: var(--pale-light-blue);
+  --color-cart-item-count-badge: var(--red);
 
   --color-product-card-bg: var(--dark-gray-12);
   --color-product-card-text: var(--white);

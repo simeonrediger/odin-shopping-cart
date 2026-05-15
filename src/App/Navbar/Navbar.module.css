@@ -36,3 +36,20 @@
 .link.active {
   background-color: var(--color-navbar-link-active);
 }
+
+.cartLink {
+  position: relative;
+}
+
+.cartItemCount {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  translate: 25% 25%;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background-color: var(--color-cart-item-count-badge);
+  border-radius: 0.75rem;
+  text-align: center;
+}

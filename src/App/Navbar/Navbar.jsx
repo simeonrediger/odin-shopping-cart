@@ -5,7 +5,7 @@ function getNavLinkClass({ isActive }) {
   return isActive ? `${styles.link} ${styles.active}` : styles.link;
 }
 
-export default function Navbar() {
+export default function Navbar({ cartItemCount }) {
   return (
     <nav>
       <ul className={styles.list}>
@@ -19,9 +19,10 @@ export default function Navbar() {
             Shop
           </NavLink>
         </li>
-        <li className={styles.item}>
+        <li className={`${styles.item} ${styles.cartLink}`}>
           <NavLink className={getNavLinkClass} to="cart">
             Cart
+            <p className={styles.cartItemCount}>{cartItemCount}</p>
           </NavLink>
         </li>
       </ul>
