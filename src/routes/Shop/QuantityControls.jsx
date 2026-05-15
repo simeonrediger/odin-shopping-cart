@@ -28,9 +28,9 @@ export default function QuantityControls({
         value={quantity.toString()}
         onChange={event => onChange(+event.target.value)}
       />
-      <div className="visually-hidden" aria-live="polite">
+      <p className="visually-hidden" aria-live="polite">
         Quantity {quantity}
-      </div>
+      </p>
       <button
         className={styles.incrementButton}
         onClick={() => onChange(quantity + 1)}
