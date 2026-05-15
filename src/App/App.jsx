@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router';
 
-import Navbar from '../components/Navbar/Navbar.jsx';
+import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
 export default function App() {
