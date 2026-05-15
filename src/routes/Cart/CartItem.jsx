@@ -1,8 +1,10 @@
 import { Link } from 'react-router';
 
+import styles from './CartItem.module.css';
+
 export default function CartItem({ id, title, price, image, quantity }) {
   return (
-    <div>
+    <div className={styles.container}>
       <img src={image} alt="" />
       <Link to={`../shop/${String(id)}`}>
         <h2 title={title}>{title}</h2>

@@ -1,0 +1,8 @@
+.container {
+  background-color: var(--color-cart-item-container);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  gap: 1.5rem;
+}
