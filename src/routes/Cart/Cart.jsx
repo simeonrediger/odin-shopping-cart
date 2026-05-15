@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 
+import CartItem from './CartItem.jsx';
+
 export default function Cart() {
   const [products, setProducts] = useState([]);
   const { cart } = useOutletContext();
@@ -23,7 +25,7 @@ export default function Cart() {
         .filter(product => cart.has(product.id))
         .map(product => (
           <li key={product.id}>
-            {product.id} ({cart.get(product.id)})
+            <CartItem {...product} quantity={cart.get(product.id)} />
           </li>
         ))}
     </ul>
