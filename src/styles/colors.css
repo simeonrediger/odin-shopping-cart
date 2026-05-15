@@ -40,4 +40,5 @@ html {
   --color-add-to-cart-button-text: var(--white);
 
   --color-cart-item-container: var(--dark-gray-12);
+  --color-cart-item-text: var(--white);
 }

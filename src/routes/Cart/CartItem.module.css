@@ -14,3 +14,17 @@
   height: 5rem;
   width: 5rem;
 }
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-cart-item-text);
+}
+
+.name {
+  color: var(--color-cart-item-text);
+  font-size: inherit;
+}
