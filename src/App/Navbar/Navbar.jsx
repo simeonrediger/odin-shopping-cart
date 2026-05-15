@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router';
+
+import '/src/styles/utilities.css';
 import styles from './Navbar.module.css';
 
 function getNavLinkClass({ isActive }) {
@@ -23,10 +25,13 @@ export default function Navbar({ cartItemCount }) {
           <NavLink className={getNavLinkClass} to="cart">
             Cart
             {cartItemCount > 0 && (
-              <p className={styles.cartItemCount}>
+              <p className={styles.cartItemCount} aria-hidden="true">
                 {cartItemCount < 100 ? cartItemCount : '99+'}
               </p>
             )}
+            <p className="visually-hidden" aria-live="polite">
+              {`Cart item count ${cartItemCount}`}
+            </p>
           </NavLink>
         </li>
       </ul>
