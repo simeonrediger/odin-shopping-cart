@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Outlet } from 'react-router';
 
 import Navbar from '../components/Navbar/Navbar.jsx';
-import styles from './RootLayout.module.css';
+import styles from './App.module.css';
 
-export default function RootLayout() {
+export default function App() {
   const [cart, setCart] = useState(new Map());
 
   function onAddToCart(itemId, quantity) {
