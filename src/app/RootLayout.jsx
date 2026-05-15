@@ -1,9 +1,19 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router';
 
 import Navbar from '../components/Navbar/Navbar.jsx';
 import styles from './RootLayout.module.css';
 
 export default function RootLayout() {
+  const [cart, setCart] = useState(new Map());
+
+  function onAddToCart(itemId, quantity) {
+    quantity += cart.get(itemId) ?? 0;
+    const newCart = new Map([...cart]);
+    newCart.set(itemId, quantity);
+    setCart(newCart);
+  }
+
   return (
     <div className={styles.root}>
       <header className={styles.header}>
@@ -11,7 +21,7 @@ export default function RootLayout() {
         <Navbar />
       </header>
       <main>
-        <Outlet />
+        <Outlet context={{ onAddToCart }} />
       </main>
     </div>
   );

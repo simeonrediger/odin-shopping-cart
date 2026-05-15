@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 
 import styles from './ProductCard.module.css';
 import QuantityControls from './QuantityControls.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
+  const { onAddToCart } = useOutletContext();
   const [quantity, setQuantity] = useState(1);
 
   const formattedPrice = formatPrice(price);
@@ -15,6 +16,10 @@ export default function ProductCard({ id, title, price, rating, image }) {
     const min = 0;
     const max = 999;
     setQuantity(Math.min(Math.max(min, newQuantity), max));
+  }
+
+  function handleAddToCart() {
+    onAddToCart(id, quantity);
   }
 
   return (
@@ -38,7 +43,9 @@ export default function ProductCard({ id, title, price, rating, image }) {
         quantity={quantity}
         onChange={handleQuantityChange}
       />
-      <button className={styles.addToCartButton}>Add to cart</button>
+      <button className={styles.addToCartButton} onClick={handleAddToCart}>
+        Add to cart
+      </button>
     </article>
   );
 }
