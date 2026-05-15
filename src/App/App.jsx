@@ -26,7 +26,7 @@ export default function App() {
         <Navbar cartItemCount={cartItemCount} />
       </header>
       <main>
-        <Outlet context={{ onAddToCart }} />
+        <Outlet context={{ cart, onAddToCart }} />
       </main>
     </div>
   );
