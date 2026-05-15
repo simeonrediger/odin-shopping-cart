@@ -12,10 +12,10 @@ export default function App() {
     0,
   );
 
-  function onAddToCart(itemId, quantity) {
-    quantity += cart.get(itemId) ?? 0;
+  function onAddToCart(productId, quantity) {
+    quantity += cart.get(productId) ?? 0;
     const newCart = new Map([...cart]);
-    newCart.set(itemId, quantity);
+    newCart.set(productId, quantity);
     setCart(newCart);
   }
 
