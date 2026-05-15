@@ -20,6 +20,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
 
   function handleAddToCart() {
     onAddToCart(id, quantity);
+    setQuantity(1);
   }
 
   return (
