@@ -27,6 +27,8 @@ html {
   --color-navbar-border-focus: var(--pale-light-blue);
   --color-cart-item-count-badge: var(--red);
 
+  --color-section-container-bg: var(--dark-gray-12);
+
   --color-product-card-bg: var(--dark-gray-12);
   --color-product-card-text: var(--white);
   --color-rating-stars: var(--gold);
