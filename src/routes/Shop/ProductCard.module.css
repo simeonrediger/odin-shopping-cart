@@ -60,3 +60,8 @@
   color: var(--color-add-to-cart-button-text);
   padding: 0.25rem 0.5rem;
 }
+
+.addToCartButton:disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}

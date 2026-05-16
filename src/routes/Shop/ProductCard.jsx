@@ -43,7 +43,11 @@ export default function ProductCard({ id, title, price, rating, image }) {
         quantity={quantityToAdd}
         onChange={handleQuantityToAddChange}
       />
-      <button className={styles.addToCartButton} onClick={handleAddToCart}>
+      <button
+        className={styles.addToCartButton}
+        disabled={quantityToAdd <= 0}
+        onClick={handleAddToCart}
+      >
         Add to cart
       </button>
     </article>
