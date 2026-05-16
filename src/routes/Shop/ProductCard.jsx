@@ -12,7 +12,11 @@ export default function ProductCard({ id, title, price, rating, image }) {
     regulateQuantityToAdd,
     onAddToCart,
   } = useOutletContext();
-  const [quantityToAdd, setQuantityToAdd] = useState(1);
+
+  const maxQuantityReached = getCurrentItemQuantity(id) < getMaxItemQuantity();
+  const [quantityToAdd, setQuantityToAdd] = useState(
+    maxQuantityReached ? 1 : 0,
+  );
 
   const formattedPrice = formatPrice(price);
   const formattedRate = formatRate(rating.rate);
