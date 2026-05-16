@@ -22,7 +22,3 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
-.itemSubtotal {
-  margin-inline-start: auto;
-}

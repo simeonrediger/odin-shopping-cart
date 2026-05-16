@@ -31,7 +31,7 @@ export default function CartItem({ id, title, price, image }) {
         />
       </td>
       <td>
-        <Price className={styles.itemSubtotal} price={price * quantity} />
+        <Price price={price * quantity} />
       </td>
     </tr>
   );
