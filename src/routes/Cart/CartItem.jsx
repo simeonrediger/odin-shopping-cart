@@ -19,7 +19,7 @@ export default function CartItem({ id, title, price, image }) {
         <p>{price}</p>
         <QuantityControls
           quantity={quantity}
-          onChange={newQuantity => onEditCart(id, newQuantity)}
+          onChange={quantity => onEditCart(id, quantity)}
         />
       </div>
       <p>{price * quantity}</p>
