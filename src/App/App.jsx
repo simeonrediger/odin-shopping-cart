@@ -27,6 +27,7 @@ export default function App() {
   }
 
   function regulateQuantity(quantity) {
+    quantity = Math.round(quantity);
     quantity = Math.max(0, quantity);
     quantity = Math.min(quantity, maxQuantityPerItem);
     return quantity;
@@ -35,6 +36,7 @@ export default function App() {
   function regulateQuantityToAdd(productId, quantityToAdd) {
     const currentQuantity = getCurrentItemQuantity(productId);
     const maxQuantityAddable = maxQuantityPerItem - currentQuantity;
+    quantityToAdd = Math.round(quantityToAdd);
     quantityToAdd = Math.max(0, quantityToAdd);
     quantityToAdd = Math.min(quantityToAdd, maxQuantityAddable);
     return quantityToAdd;
