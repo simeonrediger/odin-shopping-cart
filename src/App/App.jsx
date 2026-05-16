@@ -4,7 +4,6 @@ import { Outlet } from 'react-router';
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
-const minQuantityPerItem = 0;
 const maxQuantityPerItem = 999;
 
 export default function App() {
@@ -14,10 +13,6 @@ export default function App() {
     (count, quantity) => count + quantity,
     0,
   );
-
-  function getMinItemQuantity() {
-    return minQuantityPerItem;
-  }
 
   function getMaxItemQuantity() {
     return maxQuantityPerItem;
@@ -32,7 +27,7 @@ export default function App() {
   }
 
   function regulateQuantity(quantity) {
-    quantity = Math.max(minQuantityPerItem, quantity);
+    quantity = Math.max(0, quantity);
     quantity = Math.min(quantity, maxQuantityPerItem);
     return quantity;
   }
@@ -40,7 +35,7 @@ export default function App() {
   function regulateQuantityToAdd(productId, quantityToAdd) {
     const currentQuantity = getCurrentItemQuantity(productId);
     const maxQuantityAddable = maxQuantityPerItem - currentQuantity;
-    quantityToAdd = Math.max(minQuantityPerItem, quantityToAdd);
+    quantityToAdd = Math.max(0, quantityToAdd);
     quantityToAdd = Math.min(quantityToAdd, maxQuantityAddable);
     return quantityToAdd;
   }
@@ -76,7 +71,6 @@ export default function App() {
       <main>
         <Outlet
           context={{
-            getMinItemQuantity,
             getMaxItemQuantity,
             getCurrentItemQuantity,
             cartHasItem,

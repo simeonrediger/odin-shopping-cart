@@ -7,7 +7,6 @@ import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
   const {
-    getMinItemQuantity,
     getMaxItemQuantity,
     getCurrentItemQuantity,
     regulateQuantityToAdd,
@@ -51,7 +50,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
       <QuantityInput
         className={styles.quantityInput}
         quantity={quantityToAdd}
-        min={getMinItemQuantity()}
+        min={0}
         max={getMaxItemQuantity() - getCurrentItemQuantity(id)}
         onChange={handleQuantityToAddChange}
       />

@@ -5,12 +5,8 @@ import Price from '/src/components/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
 export default function CartItem({ id, title, price, image }) {
-  const {
-    getMinItemQuantity,
-    getMaxItemQuantity,
-    getCurrentItemQuantity,
-    onEditCart,
-  } = useOutletContext();
+  const { getMaxItemQuantity, getCurrentItemQuantity, onEditCart } =
+    useOutletContext();
 
   const quantity = getCurrentItemQuantity(id);
 
@@ -30,7 +26,7 @@ export default function CartItem({ id, title, price, image }) {
         </p>
         <QuantityInput
           quantity={quantity}
-          min={getMinItemQuantity()}
+          min={0}
           max={getMaxItemQuantity()}
           onChange={quantity => onEditCart(id, quantity)}
         />
