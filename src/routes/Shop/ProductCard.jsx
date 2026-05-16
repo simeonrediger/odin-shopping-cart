@@ -12,10 +12,10 @@ export default function ProductCard({ id, title, price, rating, image }) {
   const formattedRate = formatRate(rating.rate);
   const stars = getStarsString(rating.rate);
 
-  function handleQuantityChange(newQuantity) {
+  function handleQuantityToAddChange(newQuantityToAdd) {
     const min = 0;
     const max = 999;
-    setQuantityToAdd(Math.min(Math.max(min, newQuantity), max));
+    setQuantityToAdd(Math.min(Math.max(min, newQuantityToAdd), max));
   }
 
   function handleAddToCart() {
@@ -42,7 +42,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
       <QuantityControls
         className={styles.quantityControls}
         quantity={quantityToAdd}
-        onChange={handleQuantityChange}
+        onChange={handleQuantityToAddChange}
       />
       <button className={styles.addToCartButton} onClick={handleAddToCart}>
         Add to cart
