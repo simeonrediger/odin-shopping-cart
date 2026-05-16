@@ -19,6 +19,12 @@ export default function App() {
     setCart(newCart);
   }
 
+  function onEditCart(productId, newQuantity) {
+    const newCart = new Map([...cart]);
+    newCart.set(productId, newQuantity);
+    setCart(newCart);
+  }
+
   return (
     <div className={styles.root}>
       <header className={styles.header}>
@@ -26,7 +32,7 @@ export default function App() {
         <Navbar cartItemCount={cartItemCount} />
       </header>
       <main>
-        <Outlet context={{ cart, onAddToCart }} />
+        <Outlet context={{ cart, onAddToCart, onEditCart }} />
       </main>
     </div>
   );

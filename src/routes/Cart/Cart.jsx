@@ -26,7 +26,7 @@ export default function Cart() {
         .filter(product => cart.has(product.id))
         .map(product => (
           <li key={product.id}>
-            <CartItem {...product} quantity={cart.get(product.id)} />
+            <CartItem {...product} />
           </li>
         ))}
     </ul>
