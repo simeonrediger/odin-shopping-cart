@@ -14,3 +14,11 @@
 .itemDetailsColumn {
   width: 100%;
 }
+
+.cartItemTable :is(td, th):nth-child(2) {
+  text-align: start;
+}
+
+.cartItemTable :is(td, th):nth-child(3) {
+  text-align: end;
+}
