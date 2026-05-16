@@ -1,5 +1,5 @@
 export default function Price({ className, price }) {
-  return <p className={className}>{formatPrice(price)}</p>;
+  return <span className={className}>{formatPrice(price)}</span>;
 }
 
 function formatPrice(price) {
