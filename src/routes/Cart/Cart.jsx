@@ -27,6 +27,13 @@ export default function Cart() {
         <col className={styles.itemDetailsColumn} />
         <col />
       </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Details</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
       <tbody>
         {products
           .filter(product => cart.has(product.id))
