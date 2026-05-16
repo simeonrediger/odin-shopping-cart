@@ -7,6 +7,7 @@ import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 export default function CartItem({ id, title, price, image }) {
   const { cart, getMinItemQuantity, getMaxItemQuantity, onEditCart } =
     useOutletContext();
+
   const quantity = cart.get(id);
 
   return (
