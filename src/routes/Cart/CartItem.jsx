@@ -10,9 +10,11 @@ export default function CartItem({ id, title, price, image }) {
   const quantity = cart.get(id);
 
   return (
-    <div className={styles.cartItem}>
-      <img className={styles.image} src={image} alt="" />
-      <div>
+    <tr>
+      <td>
+        <img className={styles.image} src={image} alt="" />
+      </td>
+      <td>
         <Link to={`../shop/${String(id)}`} className={styles.link}>
           <h2 className={styles.name} title={title}>
             {title}
@@ -27,8 +29,10 @@ export default function CartItem({ id, title, price, image }) {
           max={getMaxItemQuantity()}
           onChange={quantity => onEditCart(id, quantity)}
         />
-      </div>
-      <Price className={styles.itemSubtotal} price={price * quantity} />
-    </div>
+      </td>
+      <td>
+        <Price className={styles.itemSubtotal} price={price * quantity} />
+      </td>
+    </tr>
   );
 }

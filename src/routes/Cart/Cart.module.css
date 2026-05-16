@@ -1,8 +1,8 @@
-.cartItemList {
+.cartItemTable {
+  background-color: var(--color-cart-item-container);
+  border-radius: 1rem;
   margin-inline: auto;
   max-width: 50rem;
 
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  border-spacing: 1.5rem;
 }

@@ -21,14 +21,14 @@ export default function Cart() {
   }, []);
 
   return (
-    <ul className={styles.cartItemList}>
-      {products
-        .filter(product => cart.has(product.id))
-        .map(product => (
-          <li key={product.id}>
-            <CartItem {...product} />
-          </li>
-        ))}
-    </ul>
+    <table className={styles.cartItemTable}>
+      <tbody>
+        {products
+          .filter(product => cart.has(product.id))
+          .map(product => (
+            <CartItem key={product.id} {...product} />
+          ))}
+      </tbody>
+    </table>
   );
 }
