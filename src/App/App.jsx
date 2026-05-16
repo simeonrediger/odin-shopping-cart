@@ -15,6 +15,12 @@ export default function App() {
     0,
   );
 
+  function regulateQuantity(quantity) {
+    quantity = Math.max(minQuantityPerItem, quantity);
+    quantity = Math.min(quantity, maxQuantityPerItem);
+    return quantity;
+  }
+
   function regulateQuantityToAdd(productId, quantityToAdd) {
     const currentQuantity = cart.get(productId) ?? 0;
     const maxQuantityAddable = maxQuantityPerItem - currentQuantity;
@@ -31,10 +37,7 @@ export default function App() {
   }
 
   function onEditCart(productId, quantity) {
-    const minQuantity = 0;
-    const maxQuantity = 999;
-    quantity = Math.min(Math.max(minQuantity, quantity), maxQuantity);
-
+    quantity = regulateQuantity(quantity);
     const newCart = new Map([...cart]);
     newCart.set(productId, quantity);
     setCart(newCart);
