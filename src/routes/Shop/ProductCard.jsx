@@ -6,7 +6,7 @@ import QuantityControls from './QuantityControls.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
   const { onAddToCart } = useOutletContext();
-  const [quantity, setQuantity] = useState(1);
+  const [quantityToAdd, setQuantityToAdd] = useState(1);
 
   const formattedPrice = formatPrice(price);
   const formattedRate = formatRate(rating.rate);
@@ -15,12 +15,12 @@ export default function ProductCard({ id, title, price, rating, image }) {
   function handleQuantityChange(newQuantity) {
     const min = 0;
     const max = 999;
-    setQuantity(Math.min(Math.max(min, newQuantity), max));
+    setQuantityToAdd(Math.min(Math.max(min, newQuantity), max));
   }
 
   function handleAddToCart() {
-    onAddToCart(id, quantity);
-    setQuantity(1);
+    onAddToCart(id, quantityToAdd);
+    setQuantityToAdd(1);
   }
 
   return (
@@ -41,7 +41,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
       <p className={styles.price}>{formattedPrice}</p>
       <QuantityControls
         className={styles.quantityControls}
-        quantity={quantity}
+        quantity={quantityToAdd}
         onChange={handleQuantityChange}
       />
       <button className={styles.addToCartButton} onClick={handleAddToCart}>
