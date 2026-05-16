@@ -1,7 +1,7 @@
 import { Link, useOutletContext } from 'react-router';
 
 import styles from './CartItem.module.css';
-import QuantityControls from '../Shop/QuantityControls';
+import QuantityInput from '../Shop/QuantityInput';
 
 export default function CartItem({ id, title, price, image }) {
   const { cart, getMinItemQuantity, getMaxItemQuantity, onEditCart } =
@@ -18,7 +18,7 @@ export default function CartItem({ id, title, price, image }) {
           </h2>
         </Link>
         <p>{price}</p>
-        <QuantityControls
+        <QuantityInput
           quantity={quantity}
           min={getMinItemQuantity()}
           max={getMaxItemQuantity()}

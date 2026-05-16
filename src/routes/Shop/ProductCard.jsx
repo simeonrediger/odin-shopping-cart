@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 
 import styles from './ProductCard.module.css';
-import QuantityControls from './QuantityControls.jsx';
+import QuantityInput from './QuantityInput.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
   const {
@@ -48,8 +48,8 @@ export default function ProductCard({ id, title, price, rating, image }) {
         ({rating.count})
       </p>
       <p className={styles.price}>{formattedPrice}</p>
-      <QuantityControls
-        className={styles.quantityControls}
+      <QuantityInput
+        className={styles.quantityInput}
         quantity={quantityToAdd}
         min={getMinItemQuantity()}
         max={getMaxItemQuantity() - getCurrentItemQuantity(id)}

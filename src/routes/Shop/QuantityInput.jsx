@@ -1,9 +1,9 @@
 import { useId } from 'react';
 
 import '/src/styles/utilities.css';
-import styles from './QuantityControls.module.css';
+import styles from './QuantityInput.module.css';
 
-export default function QuantityControls({
+export default function QuantityInput({
   className = '',
   quantity,
   min,
@@ -27,7 +27,7 @@ export default function QuantityControls({
       <input
         type="number"
         id={id}
-        className={styles.quantityInput}
+        className={styles.quantityField}
         value={quantity.toString()}
         onChange={event => onChange(+event.target.value)}
       />

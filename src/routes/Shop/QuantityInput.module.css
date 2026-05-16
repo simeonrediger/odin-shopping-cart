@@ -31,7 +31,7 @@
   border-radius: 0 0.375rem 0.375rem 0;
 }
 
-.quantityInput {
+.quantityField {
   background-color: var(--color-quantity-input-bg);
   color: var(--color-quantity-input-text);
   padding: 0.125rem 0.375rem;
@@ -40,13 +40,13 @@
 }
 
 /* Chrome, Safari, Edge */
-.quantityInput::-webkit-outer-spin-button,
-.quantityInput::-webkit-inner-spin-button {
+.quantityField::-webkit-outer-spin-button,
+.quantityField::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-.quantityInput {
+.quantityField {
   appearance: textfield;
 }
