@@ -18,7 +18,9 @@ export default function CartItem({ id, title, price, image }) {
             {title}
           </h2>
         </Link>
-        <Price price={price} />
+        <p>
+          <Price price={price} /> ea.
+        </p>
         <QuantityInput
           quantity={quantity}
           min={getMinItemQuantity()}
