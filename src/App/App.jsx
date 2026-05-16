@@ -41,8 +41,8 @@ export default function App() {
     return quantityToAdd;
   }
 
-  function onAddToCart(productId, quantity) {
-    quantity += getCurrentItemQuantity(productId);
+  function onAddToCart(productId, quantityToAdd) {
+    const quantity = getCurrentItemQuantity(productId) + quantityToAdd;
     const newCart = new Map(cart);
     newCart.set(productId, quantity);
     setCart(newCart);
