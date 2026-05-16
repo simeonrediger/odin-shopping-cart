@@ -22,3 +22,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.deleteButton {
+  background-color: transparent;
+  color: var(--color-item-delete-button);
+  font-family: monospace;
+}
+
+.deleteButton:is(:hover, :focus) {
+  color: var(--color-item-delete-button-hover);
+}

@@ -34,6 +34,12 @@ export default function CartItem({ id, title, price, image }) {
           max={getMaxItemQuantity()}
           onChange={quantity => onEditCart(id, quantity)}
         />
+        <button
+          className={styles.deleteButton}
+          onClick={() => onEditCart(id, 0)}
+        >
+          Delete
+        </button>
       </td>
       <td>
         <Price price={price * quantity} />

@@ -6,8 +6,10 @@ html {
   --dark-gray-10: #333;
   --dark-gray-8: #444;
   --gray: #888;
+  --light-gray-6: #bbb;
   --white: #fff;
 
+  --red: #f44;
   --pale-red: #a44;
   --pale-dark-blue: #448;
   --pale-blue: #44a;
@@ -41,4 +43,6 @@ html {
 
   --color-cart-item-table: var(--dark-gray-12);
   --color-cart-item-text: var(--white);
+  --color-item-delete-button: var(--light-gray-6);
+  --color-item-delete-button-hover: var(--red);
 }
