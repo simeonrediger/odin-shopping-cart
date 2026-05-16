@@ -20,6 +20,10 @@ export default function App() {
   }
 
   function onEditCart(productId, newQuantity) {
+    const minQuantity = 0;
+    const maxQuantity = 999;
+    newQuantity = Math.min(Math.max(minQuantity, newQuantity), maxQuantity);
+
     const newCart = new Map([...cart]);
     newCart.set(productId, newQuantity);
     setCart(newCart);

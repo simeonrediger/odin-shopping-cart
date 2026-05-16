@@ -7,12 +7,6 @@ export default function CartItem({ id, title, price, image }) {
   const { cart, onEditCart } = useOutletContext();
   const quantity = cart.get(id);
 
-  function handleQuantityChange(newQuantity) {
-    const min = 0;
-    const max = 999;
-    onEditCart(id, Math.min(Math.max(min, newQuantity), max));
-  }
-
   return (
     <div className={styles.cartItem}>
       <img className={styles.image} src={image} alt="" />
@@ -23,7 +17,10 @@ export default function CartItem({ id, title, price, image }) {
           </h2>
         </Link>
         <p>{price}</p>
-        <QuantityControls quantity={quantity} onChange={handleQuantityChange} />
+        <QuantityControls
+          quantity={quantity}
+          onChange={newQuantity => onEditCart(id, newQuantity)}
+        />
       </div>
       <p>{price * quantity}</p>
     </div>
