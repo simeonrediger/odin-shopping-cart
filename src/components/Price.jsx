@@ -3,13 +3,13 @@ export default function Price({ className, price }) {
 }
 
 function formatPrice(price) {
-  let [integerPart = '0', decimalPart = '0'] = String(price).split('.');
+  const price10xRounded = String(Math.round(price * 100));
+  let integerPart = price10xRounded.slice(0, -2);
+  const decimalPart = price10xRounded.slice(-2);
 
   for (let i = integerPart.length - 3; i > 0; i -= 3) {
     integerPart = integerPart.slice(0, i) + ',' + integerPart.slice(i);
   }
-
-  decimalPart = String(Math.round(('.' + decimalPart) * 100)).padEnd(2, 0);
 
   return `$${integerPart}.${decimalPart}`;
 }
