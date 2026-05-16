@@ -1,6 +1,6 @@
 import { Link, useOutletContext } from 'react-router';
 
-import styles from './CartItem.module.css';
+import styles from './CartItemRow.module.css';
 import Price from '/src/components/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 

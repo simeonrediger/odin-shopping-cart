@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 
 import styles from './Cart.module.css';
-import CartItem from './CartItem.jsx';
+import CartItemRow from './CartItemRow.jsx';
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
@@ -26,7 +26,7 @@ export default function Cart() {
         {products
           .filter(product => cart.has(product.id))
           .map(product => (
-            <CartItem key={product.id} {...product} />
+            <CartItemRow key={product.id} {...product} />
           ))}
       </tbody>
     </table>
