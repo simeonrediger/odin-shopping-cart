@@ -9,5 +9,5 @@ function formatPrice(price) {
     integerPart = integerPart.slice(0, i) + ',' + integerPart.slice(i);
   }
 
-  return `$${integerPart}.${decimalPart?.padEnd(2, 0)}`;
+  return `$${integerPart}.${decimalPart.padEnd(2, 0)}`;
 }
