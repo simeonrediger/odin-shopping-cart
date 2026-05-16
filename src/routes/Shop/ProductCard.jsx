@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 
 import styles from './ProductCard.module.css';
+import Price from '/src/components/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
@@ -18,7 +19,6 @@ export default function ProductCard({ id, title, price, rating, image }) {
     maxQuantityReached ? 1 : 0,
   );
 
-  const formattedPrice = formatPrice(price);
   const formattedRate = formatRate(rating.rate);
   const stars = getStarsString(rating.rate);
 
@@ -47,7 +47,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
         </span>{' '}
         ({rating.count})
       </p>
-      <p className={styles.price}>{formattedPrice}</p>
+      <Price className={styles.price} price={price} />
       <QuantityInput
         className={styles.quantityInput}
         quantity={quantityToAdd}
@@ -64,11 +64,6 @@ export default function ProductCard({ id, title, price, rating, image }) {
       </button>
     </article>
   );
-}
-
-function formatPrice(price) {
-  const [integerPart = '0', decimalPart = '0'] = String(price).split('.');
-  return `$${integerPart}.${decimalPart?.padEnd(2, 0)}`;
 }
 
 function formatRate(rate) {
