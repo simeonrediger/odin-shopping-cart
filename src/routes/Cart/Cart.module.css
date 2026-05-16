@@ -2,7 +2,7 @@
   background-color: var(--color-cart-item-container);
   border-radius: 1rem;
   margin-inline: auto;
-  max-width: 50rem;
+  width: 45rem;
 
   border-spacing: 1.5rem;
 }
