@@ -18,6 +18,11 @@
   width: 1.5rem;
 }
 
+:is(.decrementButton, .incrementButton):disabled {
+  cursor: not-allowed;
+  filter: brightness(70%);
+}
+
 .decrementButton {
   border-radius: 0.375rem 0 0 0.375rem;
 }

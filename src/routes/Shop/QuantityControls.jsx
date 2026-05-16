@@ -6,6 +6,8 @@ import styles from './QuantityControls.module.css';
 export default function QuantityControls({
   className = '',
   quantity,
+  min,
+  max,
   onChange,
 }) {
   const id = useId();
@@ -17,6 +19,7 @@ export default function QuantityControls({
       </label>
       <button
         className={styles.decrementButton}
+        disabled={quantity <= min}
         onClick={() => onChange(quantity - 1)}
       >
         &minus;
@@ -33,6 +36,7 @@ export default function QuantityControls({
       </p>
       <button
         className={styles.incrementButton}
+        disabled={quantity >= max}
         onClick={() => onChange(quantity + 1)}
       >
         +
