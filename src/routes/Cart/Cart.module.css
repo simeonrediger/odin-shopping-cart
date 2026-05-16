@@ -1,4 +1,7 @@
 .cartItemList {
+  margin-inline: auto;
+  max-width: 50rem;
+
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
