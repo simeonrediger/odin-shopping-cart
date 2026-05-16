@@ -53,7 +53,13 @@ export default function App() {
   function onEditCart(productId, quantity) {
     quantity = regulateQuantity(quantity);
     const newCart = new Map(cart);
-    newCart.set(productId, quantity);
+
+    if (quantity > 0) {
+      newCart.set(productId, quantity);
+    } else {
+      newCart.delete(productId);
+    }
+
     setCart(newCart);
   }
 
