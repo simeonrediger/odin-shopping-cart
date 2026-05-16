@@ -34,7 +34,7 @@ export default function App() {
   }
 
   function regulateQuantityToAdd(productId, quantityToAdd) {
-    const currentQuantity = cart.get(productId) ?? 0;
+    const currentQuantity = getCurrentItemQuantity(productId);
     const maxQuantityAddable = maxQuantityPerItem - currentQuantity;
     quantityToAdd = Math.max(minQuantityPerItem, quantityToAdd);
     quantityToAdd = Math.min(quantityToAdd, maxQuantityAddable);
@@ -42,7 +42,7 @@ export default function App() {
   }
 
   function onAddToCart(productId, quantity) {
-    quantity += cart.get(productId) ?? 0;
+    quantity += getCurrentItemQuantity(productId);
     const newCart = new Map([...cart]);
     newCart.set(productId, quantity);
     setCart(newCart);
