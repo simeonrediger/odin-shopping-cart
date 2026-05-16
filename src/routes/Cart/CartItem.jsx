@@ -1,7 +1,7 @@
 import { Link, useOutletContext } from 'react-router';
 
 import styles from './CartItem.module.css';
-import QuantityInput from '../Shop/QuantityInput';
+import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
 export default function CartItem({ id, title, price, image }) {
   const { cart, getMinItemQuantity, getMaxItemQuantity, onEditCart } =
