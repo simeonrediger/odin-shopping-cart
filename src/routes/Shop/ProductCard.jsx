@@ -5,7 +5,7 @@ import styles from './ProductCard.module.css';
 import QuantityControls from './QuantityControls.jsx';
 
 export default function ProductCard({ id, title, price, rating, image }) {
-  const { onAddToCart } = useOutletContext();
+  const { regulateQuantityToAdd, onAddToCart } = useOutletContext();
   const [quantityToAdd, setQuantityToAdd] = useState(1);
 
   const formattedPrice = formatPrice(price);
@@ -13,9 +13,8 @@ export default function ProductCard({ id, title, price, rating, image }) {
   const stars = getStarsString(rating.rate);
 
   function handleQuantityToAddChange(newQuantityToAdd) {
-    const min = 0;
-    const max = 999;
-    setQuantityToAdd(Math.min(Math.max(min, newQuantityToAdd), max));
+    newQuantityToAdd = regulateQuantityToAdd(id, newQuantityToAdd);
+    setQuantityToAdd(newQuantityToAdd);
   }
 
   function handleAddToCart() {
