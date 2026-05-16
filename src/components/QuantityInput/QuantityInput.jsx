@@ -12,6 +12,10 @@ export default function QuantityInput({
 }) {
   const id = useId();
 
+  function removeDecimalPartFromInput(event) {
+    event.target.value = Math.round(event.target.value);
+  }
+
   return (
     <div className={`${styles.container} ${className}`.trim()}>
       <label htmlFor={id} className={styles.label}>
@@ -32,6 +36,7 @@ export default function QuantityInput({
         min={min}
         max={max}
         onChange={event => onChange(+event.target.value)}
+        onInput={removeDecimalPartFromInput}
       />
       <p className="visually-hidden" aria-live="polite">
         {`Quantity ${quantity}`}
