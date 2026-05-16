@@ -29,6 +29,8 @@ export default function QuantityInput({
         id={id}
         className={styles.quantityField}
         value={quantity.toString()}
+        min={min}
+        max={max}
         onChange={event => onChange(+event.target.value)}
       />
       <p className="visually-hidden" aria-live="polite">
