@@ -1,5 +1,5 @@
 .cartItemTable {
-  background-color: var(--color-cart-item-container);
+  background-color: var(--color-cart-item-table);
   border-radius: 1rem;
   margin-inline: auto;
   width: 45rem;

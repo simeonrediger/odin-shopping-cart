@@ -39,6 +39,6 @@ html {
   --color-add-to-cart-button-bg: var(--pale-blue);
   --color-add-to-cart-button-text: var(--white);
 
-  --color-cart-item-container: var(--dark-gray-12);
+  --color-cart-item-table: var(--dark-gray-12);
   --color-cart-item-text: var(--white);
 }
