@@ -6,3 +6,11 @@
 
   border-spacing: 1.5rem;
 }
+
+.itemImageColumn {
+  min-width: 5rem;
+}
+
+.itemDetailsColumn {
+  width: 100%;
+}

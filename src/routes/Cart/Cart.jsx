@@ -22,6 +22,11 @@ export default function Cart() {
 
   return (
     <table className={styles.cartItemTable}>
+      <colgroup>
+        <col className={styles.itemImageColumn} />
+        <col className={styles.itemDetailsColumn} />
+        <col />
+      </colgroup>
       <tbody>
         {products
           .filter(product => cart.has(product.id))

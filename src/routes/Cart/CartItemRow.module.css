@@ -1,9 +1,8 @@
 .image {
   align-self: center;
-  object-fit: contain;
-
   height: 5rem;
-  width: 5rem;
+  margin-inline: auto;
+  object-fit: contain;
 }
 
 .link {
