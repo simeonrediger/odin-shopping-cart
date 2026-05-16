@@ -28,3 +28,7 @@
   color: var(--color-cart-item-text);
   font-size: inherit;
 }
+
+.itemSubtotal {
+  margin-inline-start: auto;
+}

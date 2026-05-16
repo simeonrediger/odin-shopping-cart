@@ -28,7 +28,7 @@ export default function CartItem({ id, title, price, image }) {
           onChange={quantity => onEditCart(id, quantity)}
         />
       </div>
-      <Price price={price * quantity} />
+      <Price className={styles.itemSubtotal} price={price * quantity} />
     </div>
   );
 }
