@@ -26,9 +26,9 @@ export default function CartItem({ id, title, price, image }) {
         </p>
         <QuantityInput
           quantity={quantity}
-          min={0}
+          min={1}
           max={getMaxItemQuantity()}
-          onChange={quantity => onEditCart(id, quantity)}
+          onChange={quantity => onEditCart(id, Math.max(1, quantity))}
         />
         <button
           className={styles.deleteButton}
