@@ -18,8 +18,8 @@ export default function ProductCard({ id, title, price, rating, image }) {
   }
 
   function handleAddToCart() {
-    onAddToCart(id, quantityToAdd);
-    setQuantityToAdd(1);
+    const maxQuantityReached = onAddToCart(id, quantityToAdd);
+    setQuantityToAdd(maxQuantityReached ? 0 : 1);
   }
 
   return (

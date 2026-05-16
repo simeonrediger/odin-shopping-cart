@@ -34,6 +34,8 @@ export default function App() {
     const newCart = new Map([...cart]);
     newCart.set(productId, quantity);
     setCart(newCart);
+
+    return newCart.get(productId) === maxQuantityPerItem;
   }
 
   function onEditCart(productId, quantity) {
