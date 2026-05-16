@@ -18,6 +18,10 @@
 .name {
   color: var(--color-cart-item-text);
   font-size: inherit;
+  max-width: 25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .itemSubtotal {
