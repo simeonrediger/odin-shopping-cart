@@ -6,7 +6,7 @@ import CartItemRow from './CartItemRow.jsx';
 
 export default function Cart() {
   const [products, setProducts] = useState([]);
-  const { cart } = useOutletContext();
+  const { cartHasItem } = useOutletContext();
 
   useEffect(() => {
     function loadData() {
@@ -36,7 +36,7 @@ export default function Cart() {
       </thead>
       <tbody>
         {products
-          .filter(product => cart.has(product.id))
+          .filter(product => cartHasItem(product.id))
           .map(product => (
             <CartItemRow key={product.id} {...product} />
           ))}

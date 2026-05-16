@@ -27,6 +27,10 @@ export default function App() {
     return cart.get(productId) ?? 0;
   }
 
+  function cartHasItem(productId) {
+    return cart.has(productId);
+  }
+
   function regulateQuantity(quantity) {
     quantity = Math.max(minQuantityPerItem, quantity);
     quantity = Math.min(quantity, maxQuantityPerItem);
@@ -72,10 +76,10 @@ export default function App() {
       <main>
         <Outlet
           context={{
-            cart,
             getMinItemQuantity,
             getMaxItemQuantity,
             getCurrentItemQuantity,
+            cartHasItem,
             regulateQuantityToAdd,
             onAddToCart,
             onEditCart,
