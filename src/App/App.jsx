@@ -73,6 +73,7 @@ export default function App() {
       <main>
         <Outlet
           context={{
+            cart,
             getMaxItemQuantity,
             getCurrentItemQuantity,
             cartHasItem,
