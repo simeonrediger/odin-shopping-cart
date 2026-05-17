@@ -12,9 +12,9 @@ export default function CartItem({ id, title, price, image }) {
 
   return (
     <tr>
-      <td>
+      <th span="row">
         <img className={styles.image} src={image} alt={title} />
-      </td>
+      </th>
       <td>
         <Link to={`../shop/${String(id)}`} className={styles.link}>
           <h2 className={styles.name} title={title}>
