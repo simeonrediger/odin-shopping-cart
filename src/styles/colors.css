@@ -43,6 +43,7 @@ html {
 
   --color-cart-item-table: var(--dark-gray-12);
   --color-cart-item-text: var(--white);
+  --color-cart-product-link: var(--pale-light-blue);
   --color-item-delete-button: var(--light-gray-6);
   --color-item-delete-button-hover: var(--red);
 }

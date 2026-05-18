@@ -5,9 +5,9 @@
   object-fit: contain;
 }
 
-.link,
-.link:visited {
-  color: var(--color-cart-item-text);
+.name.link,
+.name.link:visited {
+  color: var(--color-cart-product-link);
 }
 
 .link {
@@ -16,11 +16,10 @@
 
 .link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-cart-item-text);
+  text-decoration-color: var(--color-cart-product-link);
 }
 
 .name {
-  color: var(--color-cart-item-text);
   font-size: inherit;
   max-width: 25rem;
   overflow: hidden;
