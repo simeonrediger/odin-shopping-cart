@@ -16,10 +16,12 @@ export default function CartItem({ id, title, price, image }) {
         <img className={styles.image} src={image} alt={title} />
       </th>
       <td>
-        <Link to={`../shop/${String(id)}`} className={styles.link}>
-          <h2 className={styles.name} title={title}>
-            {title}
-          </h2>
+        <Link
+          to={`../shop/${String(id)}`}
+          className={`${styles.link} ${styles.name}`}
+          title={title}
+        >
+          {title}
         </Link>
         <p>
           <Price price={price} /> ea.

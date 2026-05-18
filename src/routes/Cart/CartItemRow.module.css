@@ -5,6 +5,11 @@
   object-fit: contain;
 }
 
+.link,
+.link:visited {
+  color: var(--color-cart-item-text);
+}
+
 .link {
   text-decoration: none;
 }
