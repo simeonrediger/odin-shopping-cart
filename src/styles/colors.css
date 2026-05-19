@@ -13,6 +13,7 @@ html {
   --pale-red: #a44;
   --pale-dark-blue: #448;
   --pale-blue: #44a;
+  --pale-light-red: #f88;
   --pale-light-blue: #a4cefe;
   --pale-light-purple: #d8b8ff;
   --gold: #edc213;
@@ -21,6 +22,7 @@ html {
   --color-text: var(--white);
   --color-link: var(--pale-light-blue);
   --color-link-visited: var(--pale-light-purple);
+  --color-error: var(--pale-light-red);
 
   --color-navbar-bg: var(--dark-gray-10);
   --color-navbar-bg-hover: var(--dark-gray-8);

@@ -1,0 +1,12 @@
+.errorContainer {
+  background-color: var(--color-section-container-bg);
+  border-radius: 2rem;
+  margin-inline: auto;
+  max-width: 100%;
+  padding: 1rem 2rem;
+  width: 25rem;
+}
+
+.errorHeading {
+  color: var(--color-error);
+}
