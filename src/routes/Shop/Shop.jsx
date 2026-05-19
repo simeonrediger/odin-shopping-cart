@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Shop.module.css';
 import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
@@ -6,40 +6,7 @@ import PageLoader from '/src/components/PageLoader/PageLoader.jsx';
 import ProductCard from './ProductCard.jsx';
 
 export default function Shop() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    function loadData() {
-      fetch('https://fakestoreapi.com/products')
-        .then(response => {
-          if (!response.ok) {
-            let errorMessage = `HTTP ${response.status}`;
-
-            if (response.statusText) {
-              errorMessage += `: ${response.statusText}`;
-            }
-
-            throw new Error(errorMessage);
-          }
-
-          return response.json();
-        })
-        .then(data => {
-          setProducts(data);
-        })
-        .catch(error => {
-          console.error(error);
-          setError(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-
-    loadData();
-  }, []);
+  const { products, loading, error } = useProducts();
 
   if (loading) {
     return <PageLoader />;
