@@ -35,11 +35,17 @@ export default function Cart() {
         </tr>
       </thead>
       <tbody>
-        {products
-          .filter(product => cartHasItem(product.id))
-          .map(product => (
-            <CartItemRow key={product.id} {...product} />
-          ))}
+        {cart.size > 0 ? (
+          products
+            .filter(product => cartHasItem(product.id))
+            .map(product => <CartItemRow key={product.id} {...product} />)
+        ) : (
+          <tr>
+            <td colSpan={3} className={styles.centered}>
+              No item in cart
+            </td>
+          </tr>
+        )}
       </tbody>
       <tfoot>
         <tr>

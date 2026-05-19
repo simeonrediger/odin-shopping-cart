@@ -22,3 +22,7 @@
 .cartItemTable :is(td, th):nth-child(3) {
   text-align: end;
 }
+
+.centered {
+  text-align: center;
+}
