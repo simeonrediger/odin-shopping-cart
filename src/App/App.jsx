@@ -6,7 +6,7 @@ import styles from './App.module.css';
 
 const maxQuantityPerItem = 999;
 
-export default function App() {
+export default function App({ children }) {
   const [cart, setCart] = useState(new Map());
 
   const cartItemCount = Array.from(cart.values()).reduce(
@@ -71,17 +71,19 @@ export default function App() {
         <Navbar cartItemCount={cartItemCount} />
       </header>
       <main>
-        <Outlet
-          context={{
-            cart,
-            getMaxItemQuantity,
-            getCurrentItemQuantity,
-            cartHasItem,
-            regulateQuantityToAdd,
-            onAddToCart,
-            onEditCart,
-          }}
-        />
+        {children || (
+          <Outlet
+            context={{
+              cart,
+              getMaxItemQuantity,
+              getCurrentItemQuantity,
+              cartHasItem,
+              regulateQuantityToAdd,
+              onAddToCart,
+              onEditCart,
+            }}
+          />
+        )}
       </main>
     </div>
   );
