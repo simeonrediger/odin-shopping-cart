@@ -4,11 +4,21 @@ import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Cart.module.css';
 import CartItemRow from './CartItemRow.jsx';
+import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
+import PageLoader from '/src/components/PageLoader/PageLoader.jsx';
 import Price from '/src/components/Price.jsx';
 
 export default function Cart() {
-  const { products } = useProducts();
+  const { products, loading, error } = useProducts();
   const { cart, cartHasItem } = useOutletContext();
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
+  if (error) {
+    return <PageFetchError error={error} />;
+  }
 
   return (
     <table className={styles.cartItemTable}>
