@@ -21,6 +21,10 @@ export default function useProducts() {
         return response.json();
       })
       .then(data => {
+        if (data.length === 0) {
+          throw new Error('No products available');
+        }
+
         setProducts(data);
       })
       .catch(error => {
