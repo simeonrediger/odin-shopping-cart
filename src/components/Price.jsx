@@ -3,7 +3,7 @@ export default function Price({ className, price }) {
 }
 
 function formatPrice(price) {
-  const price10xRounded = String(Math.round(price * 100));
+  const price10xRounded = String(Math.round(price * 100)).padStart(3, 0);
   let integerPart = price10xRounded.slice(0, -2);
   const decimalPart = price10xRounded.slice(-2);
 
