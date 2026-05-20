@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router';
 import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Cart.module.css';
-import CartItemRow from './CartItemRow.jsx';
+import CartItemRow from './CartItemRow/CartItemRow.jsx';
 import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
 import PageLoader from '/src/components/PageLoader/PageLoader.jsx';
 import Price from '/src/components/Price.jsx';
