@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router';
 
 import styles from './ProductCard.module.css';
 import Price from '/src/components/Price.jsx';
