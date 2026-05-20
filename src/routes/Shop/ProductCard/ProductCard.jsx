@@ -33,7 +33,7 @@ export default function ProductCard({ id, title, price, rating, image }) {
 
   return (
     <article className={styles.card}>
-      <Link to={String(id)} className={styles.link} title={title}>
+      <Link to="#" className={styles.link} title={title}>
         <img className={styles.image} src={image} alt="" />
         <h2 className={styles.name}>{title}</h2>
       </Link>

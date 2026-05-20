@@ -16,11 +16,7 @@ export default function CartItem({ id, title, price, image }) {
         <img className={styles.image} src={image} alt={title} />
       </th>
       <td>
-        <Link
-          to={`../shop/${String(id)}`}
-          className={`${styles.link} ${styles.name}`}
-          title={title}
-        >
+        <Link to="#" className={`${styles.link} ${styles.name}`} title={title}>
           {title}
         </Link>
         <p>
