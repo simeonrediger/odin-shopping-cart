@@ -23,8 +23,8 @@
   font-size: inherit;
   max-width: 25rem;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .deleteButton {
