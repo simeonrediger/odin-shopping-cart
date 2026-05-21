@@ -12,6 +12,8 @@ export default function Cart() {
   const { products, loading, error } = useProducts();
   const { cart, cartHasItem } = useOutletContext();
 
+  const cartItemTotal = getCartItemTotal(cart);
+
   if (loading) {
     return <PageLoader />;
   }
@@ -50,7 +52,9 @@ export default function Cart() {
       <tfoot>
         <tr>
           <th scope="row">Total</th>
-          <td>{getCartItemTotal(cart)} items</td>
+          <td>
+            {cartItemTotal} {cartItemTotal === 1 ? 'item' : 'items'}
+          </td>
           <td>
             <Price price={getCartPriceTotal(cart, products)} />
           </td>
