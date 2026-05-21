@@ -20,6 +20,7 @@
 }
 
 .name {
+  display: block;
   font-size: inherit;
   max-width: 25rem;
   overflow: hidden;
