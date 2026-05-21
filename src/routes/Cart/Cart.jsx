@@ -23,44 +23,46 @@ export default function Cart() {
   }
 
   return (
-    <table className={styles.cartItemTable}>
-      <colgroup>
-        <col className={styles.itemImageColumn} />
-        <col className={styles.itemDetailsColumn} />
-        <col />
-      </colgroup>
-      <thead>
-        <tr>
-          <th scope="col">Item</th>
-          <th scope="col">Details</th>
-          <th scope="col">Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        {cart.size > 0 ? (
-          products
-            .filter(product => cartHasItem(product.id))
-            .map(product => <CartItemRow key={product.id} {...product} />)
-        ) : (
+    <div className={styles.cartWrapper}>
+      <table className={styles.cartItemTable}>
+        <colgroup>
+          <col className={styles.itemImageColumn} />
+          <col className={styles.itemDetailsColumn} />
+          <col />
+        </colgroup>
+        <thead>
           <tr>
-            <td colSpan={3} className={styles.centered}>
-              No items in cart
+            <th scope="col">Item</th>
+            <th scope="col">Details</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.size > 0 ? (
+            products
+              .filter(product => cartHasItem(product.id))
+              .map(product => <CartItemRow key={product.id} {...product} />)
+          ) : (
+            <tr>
+              <td colSpan={3} className={styles.centered}>
+                No items in cart
+              </td>
+            </tr>
+          )}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">Total</th>
+            <td>
+              {cartItemTotal} {cartItemTotal === 1 ? 'item' : 'items'}
+            </td>
+            <td>
+              <Price price={getCartPriceTotal(cart, products)} />
             </td>
           </tr>
-        )}
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row">Total</th>
-          <td>
-            {cartItemTotal} {cartItemTotal === 1 ? 'item' : 'items'}
-          </td>
-          <td>
-            <Price price={getCartPriceTotal(cart, products)} />
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+        </tfoot>
+      </table>
+    </div>
   );
 }
 
