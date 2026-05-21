@@ -44,7 +44,7 @@ export default function Cart() {
         ) : (
           <tr>
             <td colSpan={3} className={styles.centered}>
-              No item in cart
+              No items in cart
             </td>
           </tr>
         )}
