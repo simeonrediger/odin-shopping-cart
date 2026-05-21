@@ -2,6 +2,7 @@
   background-color: var(--color-cart-item-table);
   border-radius: 1rem;
   margin-inline: auto;
+  max-width: 100%;
   width: 45rem;
 
   border-spacing: 1.5rem;
