@@ -15,3 +15,11 @@ it('shows loading state while loading', () => {
 
   expect(screen.getByRole('img', { name: /loading/i })).toBeInTheDocument();
 });
+
+it('shows error state on error', () => {
+  useProducts.mockReturnValue({ error: new Error() });
+
+  render(<Shop />);
+
+  expect(screen.getByRole('heading', { name: /error/i })).toBeInTheDocument();
+});
