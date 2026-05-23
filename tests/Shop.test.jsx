@@ -8,6 +8,10 @@ vi.mock('/src/hooks/useProducts.js', () => ({
   default: vi.fn(),
 }));
 
+vi.mock('/src/routes/Shop/ProductCard/ProductCard.jsx', () => ({
+  default: () => <div>Mock Product Card</div>,
+}));
+
 it('shows loading state while loading', () => {
   useProducts.mockReturnValue({ loading: true });
 
@@ -23,3 +27,16 @@ it('shows error state on error', () => {
 
   expect(screen.getByRole('heading', { name: /error/i })).toBeInTheDocument();
 });
+
+it.each([3, 8])(
+  'renders %d product cards when there are as many products',
+  productCount => {
+    useProducts.mockReturnValue({
+      products: Array.from({ length: productCount }, (_, i) => ({ id: i + 1 })),
+    });
+
+    render(<Shop />);
+
+    expect(screen.queryAllByRole('listitem')).toHaveLength(productCount);
+  },
+);
