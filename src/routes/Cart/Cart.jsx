@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
 
 import useProducts from '/src/hooks/useProducts.js';
@@ -11,6 +12,10 @@ import Price from '/src/components/Price.jsx';
 export default function Cart() {
   const { products, loading, error } = useProducts();
   const { cart, cartHasItem } = useOutletContext();
+
+  useEffect(() => {
+    document.title = 'Cart - Things & Stuff';
+  }, []);
 
   const cartItemTotal = getCartItemTotal(cart);
 

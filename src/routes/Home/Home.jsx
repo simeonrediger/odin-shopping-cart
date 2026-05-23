@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
+
 import styles from './Home.module.css';
 
 export default function Home({ currentDate = new Date() }) {
+  useEffect(() => {
+    document.title = 'Things & Stuff';
+  }, []);
+
   return (
     <div className={styles.container}>
       <section className={styles.sectionContainer}>

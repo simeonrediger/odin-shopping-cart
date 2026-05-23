@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Shop.module.css';
@@ -7,6 +8,10 @@ import ProductCard from './ProductCard/ProductCard.jsx';
 
 export default function Shop() {
   const { products, loading, error } = useProducts();
+
+  useEffect(() => {
+    document.title = 'Shop - Things & Stuff';
+  }, []);
 
   if (loading) {
     return <PageLoader />;
