@@ -8,11 +8,6 @@ const routes = [
   {
     path: '/',
     element: <App />,
-    errorElement: (
-      <App>
-        <ErrorPage />
-      </App>
-    ),
     children: [
       {
         index: true,
@@ -25,6 +20,10 @@ const routes = [
       {
         path: 'cart',
         element: <Cart />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
       },
     ],
   },
