@@ -14,7 +14,7 @@ export default function Home({ currentDate = new Date() }) {
         <p>We sell things, stuff, and more!</p>
       </section>
       <section className={styles.sectionContainer}>
-        <h2>{getMonthNameFromDate(currentDate)} Deals</h2>
+        <h2>{getMonthNameFromDate(currentDate)} deals</h2>
         <p>Spend $200 and get free 2-day shipping!</p>
       </section>
     </div>
