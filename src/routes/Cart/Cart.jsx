@@ -17,6 +17,14 @@ export default function Cart() {
     document.title = 'Cart - Things & Stuff';
   }, []);
 
+  useEffect(() => {
+    if (loading || error) {
+      return;
+    }
+
+    document.querySelector('[data-route-heading]')?.focus();
+  }, [loading, error]);
+
   const cartItemTotal = getCartItemTotal(cart);
 
   if (loading) {
@@ -29,6 +37,9 @@ export default function Cart() {
 
   return (
     <div className={styles.cartWrapper}>
+      <h2 data-route-heading tabIndex={-1} className="visually-hidden">
+        Cart
+      </h2>
       <table className={styles.cartItemTable}>
         <colgroup>
           <col className={styles.itemImageColumn} />

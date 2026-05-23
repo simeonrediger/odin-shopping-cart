@@ -13,6 +13,14 @@ export default function Shop() {
     document.title = 'Shop - Things & Stuff';
   }, []);
 
+  useEffect(() => {
+    if (loading || error) {
+      return;
+    }
+
+    document.querySelector('[data-route-heading]')?.focus();
+  }, [loading, error]);
+
   if (loading) {
     return <PageLoader />;
   }
@@ -22,12 +30,17 @@ export default function Shop() {
   }
 
   return (
-    <ul className={styles.products}>
-      {products.map(product => (
-        <li key={product.id}>
-          <ProductCard {...product} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2 data-route-heading tabIndex={-1} className="visually-hidden">
+        Shop
+      </h2>
+      <ul className={styles.products}>
+        {products.map(product => (
+          <li key={product.id}>
+            <ProductCard {...product} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
