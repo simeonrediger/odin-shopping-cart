@@ -1,8 +1,8 @@
 import App from '../App/App.jsx';
-import NotFoundPage from '../App/NotFoundPage/NotFoundPage.jsx';
 import Home from './Home/Home.jsx';
 import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
+import NotFoundPage from '../App/NotFoundPage/NotFoundPage.jsx';
 
 const routes = [
   {
