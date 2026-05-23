@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import styles from './ErrorPage.module.css';
+import styles from './NotFoundPage.module.css';
 
-export default function ErrorPage() {
+export default function NotFoundPage() {
   useEffect(() => {
     document.title = 'Page Not Found - Things & Stuff';
     document.querySelector('[data-route-heading]')?.focus();

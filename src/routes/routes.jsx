@@ -1,5 +1,5 @@
 import App from '../App/App.jsx';
-import ErrorPage from '../App/ErrorPage/ErrorPage.jsx';
+import NotFoundPage from '../App/NotFoundPage/NotFoundPage.jsx';
 import Home from './Home/Home.jsx';
 import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
@@ -23,7 +23,7 @@ const routes = [
       },
       {
         path: '*',
-        element: <ErrorPage />,
+        element: <NotFoundPage />,
       },
     ],
   },
