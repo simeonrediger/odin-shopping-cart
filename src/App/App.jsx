@@ -67,7 +67,7 @@ export default function App({ children }) {
   return (
     <div className={styles.root}>
       <header className={styles.header}>
-        <h1>Shop</h1>
+        <h1>Things & Stuff</h1>
         <Navbar cartItemCount={cartItemCount} />
       </header>
       <main>
