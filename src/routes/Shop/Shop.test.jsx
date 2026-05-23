@@ -1,7 +1,7 @@
 import { it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Shop from '/src/routes/Shop/Shop.jsx';
+import Shop from './Shop.jsx';
 import useProducts from '/src/hooks/useProducts.js';
 
 vi.mock('/src/hooks/useProducts.js', () => ({

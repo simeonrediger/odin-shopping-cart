@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Home from '/src/routes/Home/Home.jsx';
+import Home from './Home.jsx';
 
 it.each([
   ['2026-03-15', /march deals/i],
