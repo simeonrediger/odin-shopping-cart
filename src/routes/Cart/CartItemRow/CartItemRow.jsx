@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router';
 
 import styles from './CartItemRow.module.css';
-import Price from '/src/components/Price.jsx';
+import Price from '/src/components/Price/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
 export default function CartItem({ id, title, price, image }) {

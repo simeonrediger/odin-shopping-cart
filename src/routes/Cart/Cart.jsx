@@ -7,7 +7,7 @@ import styles from './Cart.module.css';
 import CartItemRow from './CartItemRow/CartItemRow.jsx';
 import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
 import PageLoader from '/src/components/PageLoader/PageLoader.jsx';
-import Price from '/src/components/Price.jsx';
+import Price from '/src/components/Price/Price.jsx';
 
 export default function Cart() {
   const { products, loading, error } = useProducts();
