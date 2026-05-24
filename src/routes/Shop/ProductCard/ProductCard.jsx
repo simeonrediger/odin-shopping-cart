@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useOutletContext } from 'react-router';
+import { useOutletContext } from 'react-router';
 
 import styles from './ProductCard.module.css';
 import Price from '/src/components/Price.jsx';
@@ -33,10 +33,10 @@ export default function ProductCard({ id, title, price, rating, image }) {
 
   return (
     <article className={styles.card}>
-      <Link to="#" className={styles.link} title={title}>
+      <a href="#" className={styles.link} title={title}>
         <img className={styles.image} src={image} alt="" />
         <h3 className={styles.name}>{title}</h3>
-      </Link>
+      </a>
       <p className={styles.ratings}>
         {formattedRate}{' '}
         <span className={styles.stars} role="img" aria-label="stars">
