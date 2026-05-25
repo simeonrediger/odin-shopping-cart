@@ -9,11 +9,6 @@ const maxQuantityPerItem = 999;
 export default function App({ children }) {
   const [cart, setCart] = useState(new Map());
 
-  const cartItemCount = Array.from(cart.values()).reduce(
-    (count, quantity) => count + quantity,
-    0,
-  );
-
   function getMaxItemQuantity() {
     return maxQuantityPerItem;
   }
@@ -85,7 +80,7 @@ export default function App({ children }) {
     <div className={styles.root}>
       <header className={styles.header}>
         <h1>Things & Stuff</h1>
-        <Navbar cartItemCount={cartItemCount} />
+        <Navbar cartItemCount={getCartItemTotal()} />
       </header>
       <main>
         {children || (
