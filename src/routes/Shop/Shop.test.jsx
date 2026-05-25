@@ -1,4 +1,4 @@
-import { it, expect, vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 
 import renderWithAppContext from '/tests/test-utils/render-with-app-context.jsx';
@@ -34,15 +34,14 @@ it('shows error state on error', () => {
   expect(screen.getByRole('heading', { name: /error/i })).toBeInTheDocument();
 });
 
-it.each([3, 8])(
-  'renders %d product cards when there are as many products',
-  productCount => {
+describe('renders n product cards for n products', () => {
+  it.each([3, 8])('n = %d', n => {
     useProducts.mockReturnValue({
-      products: Array.from({ length: productCount }, (_, i) => ({ id: i + 1 })),
+      products: Array.from({ length: n }, (_, i) => ({ id: i + 1 })),
     });
 
     renderShopWithAppContext();
 
-    expect(screen.queryAllByRole('listitem')).toHaveLength(productCount);
-  },
-);
+    expect(screen.queryAllByRole('listitem')).toHaveLength(n);
+  });
+});
