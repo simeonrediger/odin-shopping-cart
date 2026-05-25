@@ -54,3 +54,9 @@ it('sets document title', () => {
 
   expect(document.title).toMatch(buildDocumentTitle('Shop'));
 });
+
+it('focuses page title heading', () => {
+  renderShopWithAppContext();
+
+  expect(screen.getByRole('heading', { name: 'Shop' })).toHaveFocus();
+});
