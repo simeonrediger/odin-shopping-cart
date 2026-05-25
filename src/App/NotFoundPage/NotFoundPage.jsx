@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 
+import { buildDocumentTitle } from '/src/utils.js';
+
 import styles from './NotFoundPage.module.css';
 
 export default function NotFoundPage() {
   useEffect(() => {
-    document.title = 'Page Not Found - Things & Stuff';
+    document.title = buildDocumentTitle('Page Not Found');
     document.querySelector('[data-route-heading]')?.focus();
   }, []);
 

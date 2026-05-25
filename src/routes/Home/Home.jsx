@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 
+import { SITE_TITLE } from '/src/constants.js';
+
 import styles from './Home.module.css';
 
 export default function Home({ currentDate = new Date() }) {
   useEffect(() => {
-    document.title = 'Things & Stuff';
+    document.title = SITE_TITLE;
     document.querySelector('[data-route-heading]')?.focus();
   }, []);
 

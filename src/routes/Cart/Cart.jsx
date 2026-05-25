@@ -3,6 +3,8 @@ import { useOutletContext } from 'react-router';
 
 import useProducts from '/src/hooks/useProducts.js';
 
+import { buildDocumentTitle } from '/src/utils.js';
+
 import styles from './Cart.module.css';
 import CartItemRow from './CartItemRow/CartItemRow.jsx';
 import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
@@ -23,7 +25,7 @@ export default function Cart() {
   } = useOutletContext();
 
   useEffect(() => {
-    document.title = 'Cart - Things & Stuff';
+    document.title = buildDocumentTitle('Cart');
   }, []);
 
   useEffect(() => {

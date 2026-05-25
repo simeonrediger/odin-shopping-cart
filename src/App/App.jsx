@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router';
 
+import { SITE_TITLE } from '/src/constants.js';
+
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
@@ -79,7 +81,7 @@ export default function App({ children }) {
   return (
     <div className={styles.root}>
       <header className={styles.header}>
-        <h1>Things & Stuff</h1>
+        <h1>{SITE_TITLE}</h1>
         <Navbar cartItemCount={getCartItemTotal()} />
       </header>
       <main>

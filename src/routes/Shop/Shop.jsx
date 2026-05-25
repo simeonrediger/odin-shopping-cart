@@ -3,6 +3,8 @@ import { useOutletContext } from 'react-router';
 
 import useProducts from '/src/hooks/useProducts.js';
 
+import { buildDocumentTitle } from '/src/utils.js';
+
 import styles from './Shop.module.css';
 import PageFetchError from '/src/components/PageFetchError/PageFetchError.jsx';
 import PageLoader from '/src/components/PageLoader/PageLoader.jsx';
@@ -19,7 +21,7 @@ export default function Shop() {
   } = useOutletContext();
 
   useEffect(() => {
-    document.title = 'Shop - Things & Stuff';
+    document.title = buildDocumentTitle('Shop');
   }, []);
 
   useEffect(() => {
