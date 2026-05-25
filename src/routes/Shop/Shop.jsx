@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router';
+
 import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Shop.module.css';
