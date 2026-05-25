@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 
 import renderWithAppContext from '/tests/test-utils/render-with-app-context.jsx';
+import { buildDocumentTitle } from '/src/utils.js';
 
 import Shop from './Shop.jsx';
 import useProducts from '/src/hooks/useProducts.js';
@@ -44,4 +45,12 @@ describe('renders n product cards for n products', () => {
 
     expect(screen.queryAllByRole('listitem')).toHaveLength(n);
   });
+});
+
+it('sets document title', () => {
+  document.title = 'Initial Title';
+
+  renderShopWithAppContext();
+
+  expect(document.title).toMatch(buildDocumentTitle('Shop'));
 });
