@@ -35,15 +35,15 @@ it('shows error state on error', () => {
   expect(screen.getByRole('heading', { name: /error/i })).toBeInTheDocument();
 });
 
-describe('renders n product cards for n products', () => {
-  it.each([3, 8])('n = %d', n => {
+describe('renders the correct number of product cards', () => {
+  it.each([3, 8])('for %d products', productCount => {
     useProducts.mockReturnValue({
-      products: Array.from({ length: n }, (_, i) => ({ id: i + 1 })),
+      products: Array.from({ length: productCount }, (_, i) => ({ id: i + 1 })),
     });
 
     renderShopWithAppContext();
 
-    expect(screen.queryAllByRole('listitem')).toHaveLength(n);
+    expect(screen.queryAllByRole('listitem')).toHaveLength(productCount);
   });
 });
 
