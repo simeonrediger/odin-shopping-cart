@@ -13,8 +13,10 @@ export default function Cart() {
   const { products, loading, error } = useProducts();
 
   const {
-    cart,
     cartHasItem,
+    cartIsEmpty,
+    getCartItemTotal,
+    getCartPriceTotal,
     getMaxItemQuantity,
     getCurrentItemQuantity,
     onEditCart,
@@ -32,7 +34,8 @@ export default function Cart() {
     document.querySelector('[data-route-heading]')?.focus();
   }, [loading, error]);
 
-  const cartItemTotal = getCartItemTotal(cart);
+  const cartItemTotal = getCartItemTotal();
+  const cartPriceTotal = getCartPriceTotal(products);
 
   if (loading) {
     return <PageLoader />;
@@ -61,7 +64,13 @@ export default function Cart() {
           </tr>
         </thead>
         <tbody>
-          {cart.size > 0 ? (
+          {cartIsEmpty() ? (
+            <tr>
+              <td colSpan={3} className={styles.centered}>
+                No items in cart
+              </td>
+            </tr>
+          ) : (
             products
               .filter(product => cartHasItem(product.id))
               .map(product => (
@@ -73,12 +82,6 @@ export default function Cart() {
                   onEditCart={onEditCart}
                 />
               ))
-          ) : (
-            <tr>
-              <td colSpan={3} className={styles.centered}>
-                No items in cart
-              </td>
-            </tr>
           )}
         </tbody>
         <tfoot>
@@ -88,24 +91,11 @@ export default function Cart() {
               {cartItemTotal} {cartItemTotal === 1 ? 'item' : 'items'}
             </td>
             <td>
-              <Price price={getCartPriceTotal(cart, products)} />
+              <Price price={cartPriceTotal} />
             </td>
           </tr>
         </tfoot>
       </table>
     </div>
   );
-}
-
-function getCartItemTotal(cart) {
-  return cart
-    .values()
-    .reduce((totalQuantity, quantity) => totalQuantity + quantity, 0);
-}
-
-function getCartPriceTotal(cart, products) {
-  return cart.entries().reduce((totalPrice, [productId, quantity]) => {
-    const product = products.find(product => product.id === productId);
-    return totalPrice + quantity * (product?.price ?? 0);
-  }, 0);
 }

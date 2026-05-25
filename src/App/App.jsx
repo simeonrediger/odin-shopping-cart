@@ -26,6 +26,23 @@ export default function App({ children }) {
     return cart.has(productId);
   }
 
+  function cartIsEmpty() {
+    return cart.size === 0;
+  }
+
+  function getCartItemTotal() {
+    return cart
+      .values()
+      .reduce((totalQuantity, quantity) => totalQuantity + quantity, 0);
+  }
+
+  function getCartPriceTotal(products) {
+    return cart.entries().reduce((totalPrice, [productId, quantity]) => {
+      const product = products.find(product => product.id === productId);
+      return totalPrice + quantity * (product?.price ?? 0);
+    }, 0);
+  }
+
   function regulateQuantity(quantity) {
     quantity = Math.round(quantity);
     quantity = Math.max(0, quantity);
@@ -74,10 +91,12 @@ export default function App({ children }) {
         {children || (
           <Outlet
             context={{
-              cart,
               getMaxItemQuantity,
               getCurrentItemQuantity,
               cartHasItem,
+              cartIsEmpty,
+              getCartItemTotal,
+              getCartPriceTotal,
               regulateQuantityToAdd,
               onAddToCart,
               onEditCart,
