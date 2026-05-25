@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { useOutletContext } from 'react-router';
 
 import styles from './ProductCard.module.css';
 import Price from '/src/components/Price/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
 
-export default function ProductCard({ id, title, price, rating, image }) {
-  const {
-    getMaxItemQuantity,
-    getCurrentItemQuantity,
-    regulateQuantityToAdd,
-    onAddToCart,
-  } = useOutletContext();
-
+export default function ProductCard({
+  id,
+  title,
+  price,
+  rating,
+  image,
+  getMaxItemQuantity,
+  getCurrentItemQuantity,
+  regulateQuantityToAdd,
+  onAddToCart,
+}) {
   const maxQuantityReached = getCurrentItemQuantity(id) < getMaxItemQuantity();
   const [quantityToAdd, setQuantityToAdd] = useState(
     maxQuantityReached ? 1 : 0,

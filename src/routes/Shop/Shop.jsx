@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useOutletContext } from 'react-router';
 import useProducts from '/src/hooks/useProducts.js';
 
 import styles from './Shop.module.css';
@@ -8,6 +9,13 @@ import ProductCard from './ProductCard/ProductCard.jsx';
 
 export default function Shop() {
   const { products, loading, error } = useProducts();
+
+  const {
+    getMaxItemQuantity,
+    getCurrentItemQuantity,
+    regulateQuantityToAdd,
+    onAddToCart,
+  } = useOutletContext();
 
   useEffect(() => {
     document.title = 'Shop - Things & Stuff';
@@ -37,7 +45,13 @@ export default function Shop() {
       <ul className={styles.products}>
         {products.map(product => (
           <li key={product.id}>
-            <ProductCard {...product} />
+            <ProductCard
+              {...product}
+              getMaxItemQuantity={getMaxItemQuantity}
+              getCurrentItemQuantity={getCurrentItemQuantity}
+              regulateQuantityToAdd={regulateQuantityToAdd}
+              onAddToCart={onAddToCart}
+            />
           </li>
         ))}
       </ul>
