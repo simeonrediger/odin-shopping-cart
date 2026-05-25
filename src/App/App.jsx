@@ -4,13 +4,13 @@ import { Outlet } from 'react-router';
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
-const maxQuantityPerItem = 999;
+const MAX_QUANTITY_PER_ITEM = 999;
 
 export default function App({ children }) {
   const [cart, setCart] = useState(new Map());
 
   function getMaxItemQuantity() {
-    return maxQuantityPerItem;
+    return MAX_QUANTITY_PER_ITEM;
   }
 
   function getCurrentItemQuantity(productId) {
@@ -41,13 +41,13 @@ export default function App({ children }) {
   function regulateQuantity(quantity) {
     quantity = Math.round(quantity);
     quantity = Math.max(0, quantity);
-    quantity = Math.min(quantity, maxQuantityPerItem);
+    quantity = Math.min(quantity, MAX_QUANTITY_PER_ITEM);
     return quantity;
   }
 
   function regulateQuantityToAdd(productId, quantityToAdd) {
     const currentQuantity = getCurrentItemQuantity(productId);
-    const maxQuantityAddable = maxQuantityPerItem - currentQuantity;
+    const maxQuantityAddable = MAX_QUANTITY_PER_ITEM - currentQuantity;
     quantityToAdd = Math.round(quantityToAdd);
     quantityToAdd = Math.max(0, quantityToAdd);
     quantityToAdd = Math.min(quantityToAdd, maxQuantityAddable);
@@ -60,7 +60,7 @@ export default function App({ children }) {
     newCart.set(productId, quantity);
     setCart(newCart);
 
-    return newCart.get(productId) === maxQuantityPerItem;
+    return newCart.get(productId) === MAX_QUANTITY_PER_ITEM;
   }
 
   function onEditCart(productId, quantity) {
