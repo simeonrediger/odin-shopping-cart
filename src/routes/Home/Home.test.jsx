@@ -23,3 +23,9 @@ it('sets document title', () => {
 
   expect(document.title).toMatch(SITE_TITLE);
 });
+
+it('focuses page title heading', () => {
+  render(<Home />);
+
+  expect(screen.getByRole('heading', { name: 'Home' })).toHaveFocus();
+});
