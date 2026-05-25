@@ -11,7 +11,14 @@ import Price from '/src/components/Price/Price.jsx';
 
 export default function Cart() {
   const { products, loading, error } = useProducts();
-  const { cart, cartHasItem } = useOutletContext();
+
+  const {
+    cart,
+    cartHasItem,
+    getMaxItemQuantity,
+    getCurrentItemQuantity,
+    onEditCart,
+  } = useOutletContext();
 
   useEffect(() => {
     document.title = 'Cart - Things & Stuff';
@@ -57,7 +64,15 @@ export default function Cart() {
           {cart.size > 0 ? (
             products
               .filter(product => cartHasItem(product.id))
-              .map(product => <CartItemRow key={product.id} {...product} />)
+              .map(product => (
+                <CartItemRow
+                  key={product.id}
+                  {...product}
+                  getMaxItemQuantity={getMaxItemQuantity}
+                  getCurrentItemQuantity={getCurrentItemQuantity}
+                  onEditCart={onEditCart}
+                />
+              ))
           ) : (
             <tr>
               <td colSpan={3} className={styles.centered}>
