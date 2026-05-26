@@ -20,7 +20,7 @@ vi.mock('/src/routes/Cart/CartItemRow/CartItemRow.jsx', () => ({
 }));
 
 function renderCartWithAppContext(contextOptions) {
-  return renderWithAppContext('cart', Cart, contextOptions);
+  return renderWithAppContext('/cart', Cart, contextOptions);
 }
 
 it('shows loading state while loading', () => {

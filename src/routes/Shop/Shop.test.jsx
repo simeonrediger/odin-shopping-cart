@@ -16,7 +16,7 @@ vi.mock('/src/routes/Shop/ProductCard/ProductCard.jsx', () => ({
 }));
 
 function renderShopWithAppContext(contextOptions) {
-  return renderWithAppContext('shop', Shop, contextOptions);
+  return renderWithAppContext('/shop', Shop, contextOptions);
 }
 
 it('shows loading state while loading', () => {

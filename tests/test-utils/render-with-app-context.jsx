@@ -8,6 +8,7 @@ export default function renderWithAppContext(
   contextOptions,
 ) {
   const context = { ...createOutletContext(contextOptions) };
+  const relativePath = path === '/' ? null : path.slice(1);
 
   const Stub = createRoutesStub([
     {
@@ -16,14 +17,12 @@ export default function renderWithAppContext(
       children: [
         path === '/'
           ? { index: true, Component: ChildComponent }
-          : { path, Component: ChildComponent },
+          : { path: relativePath, Component: ChildComponent },
       ],
     },
   ]);
 
-  const initialEntry = path === '/' ? '/' : `/${path}`;
-
-  return render(<Stub initialEntries={[initialEntry]} />);
+  return render(<Stub initialEntries={[path]} />);
 }
 
 function createOutletContext(contextOptions = {}) {
