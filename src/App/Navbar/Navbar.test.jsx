@@ -1,9 +1,19 @@
 import { describe, it, expect } from 'vitest';
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 
 import renderAppAtPath from '/tests/test-utils/render-app-at-path';
 
+import Navbar from './Navbar.jsx';
 import styles from './Navbar.module.css';
+
+function renderNavbar(props) {
+  return render(
+    <MemoryRouter>
+      <Navbar {...props} />
+    </MemoryRouter>,
+  );
+}
 
 describe('gives the .active class', () => {
   it.each([
@@ -25,5 +35,15 @@ describe("doesn't give the .active class", () => {
     renderAppAtPath(path);
 
     expect(screen.getByRole('link', { name })).not.toHaveClass(styles.active);
+  });
+});
+
+describe("has cart item count as 'Cart' link's accessible description", () => {
+  it.each([0, 7])('when cart item count is %d', cartItemCount => {
+    renderNavbar({ cartItemCount });
+
+    expect(
+      screen.getByRole('link', { name: 'Cart' }),
+    ).toHaveAccessibleDescription(`Cart item count ${cartItemCount}`);
   });
 });
