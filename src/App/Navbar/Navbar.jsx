@@ -22,14 +22,23 @@ export default function Navbar({ cartItemCount }) {
           </NavLink>
         </li>
         <li className={`${styles.item} ${styles.cartLink}`}>
-          <NavLink className={getNavLinkClass} to="cart">
-            Cart
+          <NavLink
+            className={getNavLinkClass}
+            to="cart"
+            aria-labelledby="cart-link-name"
+            aria-describedby="cart-item-count"
+          >
+            <span id="cart-link-name">Cart</span>
             {cartItemCount > 0 && (
               <p className={styles.cartItemCount} aria-hidden="true">
                 {cartItemCount < 100 ? cartItemCount : '99+'}
               </p>
             )}
-            <p className="visually-hidden" aria-live="polite">
+            <p
+              id="cart-item-count"
+              className="visually-hidden"
+              aria-live="polite"
+            >
               {`Cart item count ${cartItemCount}`}
             </p>
           </NavLink>
