@@ -13,11 +13,17 @@ export default function renderWithAppContext(
     {
       path: '/',
       Component: () => <Outlet context={context} />,
-      children: [{ path, Component: ChildComponent }],
+      children: [
+        path === '/'
+          ? { index: true, Component: ChildComponent }
+          : { path, Component: ChildComponent },
+      ],
     },
   ]);
 
-  return render(<Stub initialEntries={[`/${path}`]} />);
+  const initialEntry = path === '/' ? '/' : `/${path}`;
+
+  return render(<Stub initialEntries={[initialEntry]} />);
 }
 
 function createOutletContext(contextOptions = {}) {
