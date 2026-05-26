@@ -2,8 +2,12 @@ import { vi } from 'vitest';
 import { createRoutesStub, Outlet } from 'react-router';
 import { render } from '@testing-library/react';
 
-export default function renderWithAppContext(path, ChildComponent) {
-  const context = createOutletContext();
+export default function renderWithAppContext(
+  path,
+  ChildComponent,
+  contextOptions,
+) {
+  const context = { ...createOutletContext(contextOptions) };
 
   const Stub = createRoutesStub([
     {
@@ -16,7 +20,7 @@ export default function renderWithAppContext(path, ChildComponent) {
   return render(<Stub initialEntries={[`/${path}`]} />);
 }
 
-function createOutletContext() {
+function createOutletContext(contextOptions = {}) {
   return {
     getMaxItemQuantity: vi.fn(),
     getCurrentItemQuantity: vi.fn(),
@@ -27,5 +31,6 @@ function createOutletContext() {
     regulateQuantityToAdd: vi.fn(),
     onAddToCart: vi.fn(),
     onEditCart: vi.fn(),
+    ...contextOptions,
   };
 }
