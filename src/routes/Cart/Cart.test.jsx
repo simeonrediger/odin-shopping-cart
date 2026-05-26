@@ -76,3 +76,9 @@ it('sets document title', () => {
 
   expect(document.title).toMatch(buildDocumentTitle('Cart'));
 });
+
+it('focuses page title heading', () => {
+  renderCartWithAppContext();
+
+  expect(screen.getByRole('heading', { name: 'Cart' })).toHaveFocus();
+});
