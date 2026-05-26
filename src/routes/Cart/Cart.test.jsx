@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 
 import renderWithAppContext from '/tests/test-utils/render-with-app-context.jsx';
+import { buildDocumentTitle } from '/src/utils.js';
 
 import Cart from './Cart.jsx';
 import useProducts from '/src/hooks/useProducts.js';
@@ -66,4 +67,12 @@ describe('renders the correct number of cart item rows', () => {
       uniqueItemCount,
     );
   });
+});
+
+it('sets document title', () => {
+  document.title = 'Initial Title';
+
+  renderCartWithAppContext();
+
+  expect(document.title).toMatch(buildDocumentTitle('Cart'));
 });
