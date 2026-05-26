@@ -1,4 +1,4 @@
-import { it, expect, vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 
 import renderWithAppContext from '/tests/test-utils/render-with-app-context.jsx';
@@ -8,6 +8,14 @@ import useProducts from '/src/hooks/useProducts.js';
 
 vi.mock('/src/hooks/useProducts.js', () => ({
   default: vi.fn(),
+}));
+
+vi.mock('/src/routes/Cart/CartItemRow/CartItemRow.jsx', () => ({
+  default: ({ id }) => (
+    <tr data-testid="cart-item-row">
+      <td>Product {id}</td>
+    </tr>
+  ),
 }));
 
 function renderCartWithAppContext(contextOptions) {
@@ -32,4 +40,30 @@ it('shows error state on error', () => {
   renderCartWithAppContext();
 
   expect(screen.getByRole('heading', { name: /error/i })).toBeInTheDocument();
+});
+
+describe('renders the correct number of cart item rows', () => {
+  it.each([0, 5])('for %d unique items', uniqueItemCount => {
+    const itemIdsInCart = new Set(
+      Array.from({ length: uniqueItemCount }, (_, i) => i + 1),
+    );
+    useProducts.mockReturnValue({
+      products: Array.from({ length: 2 * uniqueItemCount }, (_, i) => ({
+        id: i + 1,
+      })),
+      loading: false,
+      error: null,
+    });
+
+    renderCartWithAppContext({
+      cartIsEmpty: vi.fn().mockReturnValue(false),
+      cartHasItem: vi
+        .fn()
+        .mockImplementation(itemId => itemIdsInCart.has(itemId)),
+    });
+
+    expect(screen.queryAllByTestId('cart-item-row')).toHaveLength(
+      uniqueItemCount,
+    );
+  });
 });
