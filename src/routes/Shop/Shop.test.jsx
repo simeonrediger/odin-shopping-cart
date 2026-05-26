@@ -20,7 +20,7 @@ function renderShopWithAppContext(contextOptions) {
 }
 
 it('shows loading state while loading', () => {
-  useProducts.mockReturnValue({ loading: true });
+  useProducts.mockReturnValue({ products: [], loading: true, error: null });
 
   renderShopWithAppContext();
 
@@ -28,7 +28,11 @@ it('shows loading state while loading', () => {
 });
 
 it('shows error state on error', () => {
-  useProducts.mockReturnValue({ error: new Error() });
+  useProducts.mockReturnValue({
+    products: [],
+    loading: false,
+    error: new Error(),
+  });
 
   renderShopWithAppContext();
 
@@ -39,6 +43,8 @@ describe('renders the correct number of product cards', () => {
   it.each([3, 8])('for %d products', productCount => {
     useProducts.mockReturnValue({
       products: Array.from({ length: productCount }, (_, i) => ({ id: i + 1 })),
+      loading: false,
+      error: null,
     });
 
     renderShopWithAppContext();
