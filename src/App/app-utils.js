@@ -51,7 +51,8 @@ export function onAddToCart(cart, setCart, productId, quantityToAdd) {
   newCart.set(productId, quantity);
   setCart(newCart);
 
-  return newCart.get(productId) === MAX_QUANTITY_PER_ITEM;
+  const maxQuantityReached = newCart.get(productId) === MAX_QUANTITY_PER_ITEM;
+  return maxQuantityReached;
 }
 
 export function onEditCart(cart, setCart, productId, quantity) {
