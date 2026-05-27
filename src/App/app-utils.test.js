@@ -9,6 +9,7 @@ import {
   getCartItemTotal,
   getCartPriceTotal,
   regulateQuantity,
+  regulateQuantityToAdd,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -148,5 +149,33 @@ describe('regulateQuantity()', () => {
     expect(regulateQuantity(MAX_QUANTITY_PER_ITEM + 1)).toBe(
       MAX_QUANTITY_PER_ITEM,
     );
+  });
+});
+
+describe('regulateQuantityToAdd()', () => {
+  const cart = new Map();
+  const productId = 1;
+  cart.set(productId, 38);
+
+  describe('rounds non-integer quantity-to-add to nearest integer', () => {
+    it('when decimal part is less than 0.5', () => {
+      expect(regulateQuantityToAdd(cart, productId, 43.4)).toBe(43);
+    });
+
+    it('when decimal part is at least 0.5', () => {
+      expect(regulateQuantityToAdd(cart, productId, 43.5)).toBe(44);
+    });
+  });
+
+  it('returns 0 if quantity to add is negative', () => {
+    expect(regulateQuantityToAdd(cart, productId, -1)).toBe(0);
+  });
+
+  it('returns 0 if item has reached the maximum quantity', () => {
+    const cart = new Map();
+    const productId = 1;
+    cart.set(productId, MAX_QUANTITY_PER_ITEM);
+
+    expect(regulateQuantityToAdd(cart, productId, 1)).toBe(0);
   });
 });
