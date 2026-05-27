@@ -7,6 +7,7 @@ import {
   cartHasItem,
   cartIsEmpty,
   getCartItemTotal,
+  getCartPriceTotal,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -98,6 +99,31 @@ describe('getCartItemTotal()', () => {
       const cart = new Map();
 
       expect(getCartItemTotal(cart)).toBe(0);
+    });
+  });
+});
+
+describe('getCartPriceTotal()', () => {
+  describe('returns the correct cart price total', () => {
+    const products = [
+      { id: 1, price: 5 },
+      { id: 2, price: 32 },
+      { id: 3, price: 19 },
+    ];
+
+    it('when cart has items', () => {
+      const cart = new Map();
+      cart.set(1, 2);
+      cart.set(2, 1);
+      cart.set(3, 3);
+
+      expect(getCartPriceTotal(cart, products)).toBe(99);
+    });
+
+    it('when cart is empty', () => {
+      const cart = new Map();
+
+      expect(getCartPriceTotal(cart, products)).toBe(0);
     });
   });
 });
