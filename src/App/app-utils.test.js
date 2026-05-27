@@ -5,6 +5,7 @@ import {
   getMaxItemQuantity,
   getCurrentItemQuantity,
   cartHasItem,
+  cartIsEmpty,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -56,5 +57,27 @@ describe('cartHasItem()', () => {
     const productId = 1;
 
     expect(cartHasItem(cart, productId)).toBe(false);
+  });
+});
+
+describe('cartIsEmpty()', () => {
+  it('returns true when the cart has no items', () => {
+    const cart = new Map();
+
+    expect(cartIsEmpty(cart)).toBe(true);
+  });
+
+  it('returns true when the cart has no items with nonzero quantities', () => {
+    const cart = new Map();
+    cart.set(1, 0);
+
+    expect(cartIsEmpty(cart)).toBe(true);
+  });
+
+  it('returns false when the cart has an item with nonzero quantity', () => {
+    const cart = new Map();
+    cart.set(1, 1);
+
+    expect(cartIsEmpty(cart)).toBe(false);
   });
 });
