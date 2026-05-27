@@ -6,6 +6,7 @@ import {
   getCurrentItemQuantity,
   cartHasItem,
   cartIsEmpty,
+  getCartItemTotal,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -79,5 +80,24 @@ describe('cartIsEmpty()', () => {
     cart.set(1, 1);
 
     expect(cartIsEmpty(cart)).toBe(false);
+  });
+});
+
+describe('getCartItemTotal()', () => {
+  describe('returns the correct cart item total', () => {
+    it('when cart has items', () => {
+      const cart = new Map();
+      cart.set(1, 1);
+      cart.set(2, 5);
+      cart.set(3, 3);
+
+      expect(getCartItemTotal(cart)).toBe(9);
+    });
+
+    it('when cart is empty', () => {
+      const cart = new Map();
+
+      expect(getCartItemTotal(cart)).toBe(0);
+    });
   });
 });
