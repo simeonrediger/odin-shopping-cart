@@ -11,6 +11,7 @@ import {
   regulateQuantity,
   regulateQuantityToAdd,
   onAddToCart,
+  onEditCart,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -226,5 +227,41 @@ describe('onAddToCart()', () => {
 
       expect(result).toBe(false);
     });
+  });
+});
+
+describe('onEditCart()', () => {
+  const productId = 1;
+  const quantity = 1;
+
+  it('does not update the existing cart instance', () => {
+    const cart = new Map();
+    const setCart = vi.fn();
+
+    onEditCart(cart, setCart, productId, quantity);
+
+    expect(setCart).not.toHaveBeenCalledWith([cart]);
+  });
+
+  it('updates the cart item quantity with the correct quantity', () => {
+    const cart = new Map();
+    cart.set(productId, 5);
+    const setCart = vi.fn();
+
+    onEditCart(cart, setCart, productId, quantity);
+
+    const newCart = setCart.mock.calls[0][0];
+    const newQuantity = newCart.get(productId);
+    expect(newQuantity).toBe(quantity);
+  });
+
+  it('deletes the item from the cart if quantity is 0', () => {
+    let cart = new Map();
+    cart.set(productId, 5);
+    const setCart = newCart => (cart = newCart);
+
+    onEditCart(cart, setCart, productId, 0);
+
+    expect(cart.has(productId)).toBe(false);
   });
 });
