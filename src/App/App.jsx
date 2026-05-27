@@ -12,7 +12,7 @@ import {
   regulateQuantityToAdd,
   onAddToCart,
   onEditCart,
-} from './app-utils.js';
+} from '/src/cart/cart-utils.js';
 
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';

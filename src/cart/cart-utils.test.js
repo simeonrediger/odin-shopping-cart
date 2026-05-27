@@ -12,7 +12,7 @@ import {
   regulateQuantityToAdd,
   onAddToCart,
   onEditCart,
-} from './app-utils.js';
+} from './cart-utils.js';
 
 describe('getMaxItemQuantity()', () => {
   it('returns MAX_QUANTITY_PER_ITEM', () => {
