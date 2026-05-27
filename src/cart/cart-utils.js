@@ -1,4 +1,4 @@
-export const MAX_QUANTITY_PER_ITEM = 999;
+import { MAX_QUANTITY_PER_ITEM } from './cart-constants.js';
 
 export function getMaxItemQuantity() {
   return MAX_QUANTITY_PER_ITEM;

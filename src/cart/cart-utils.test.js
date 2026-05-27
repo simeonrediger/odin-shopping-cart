@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 
+import { MAX_QUANTITY_PER_ITEM } from './cart-constants.js';
 import {
-  MAX_QUANTITY_PER_ITEM,
   getMaxItemQuantity,
   getCurrentItemQuantity,
   cartHasItem,
