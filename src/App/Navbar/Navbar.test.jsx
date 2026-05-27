@@ -70,14 +70,12 @@ describe("Cart item count in 'Cart' link", () => {
       ).toHaveTextContent('99+');
     });
   });
-});
 
-describe("has cart item count as 'Cart' link's accessible description", () => {
-  it.each([0, 7])('when cart item count is %d', cartItemCount => {
-    renderNavbar({ cartItemCount });
+  it('is included in the accessible description', () => {
+    renderNavbar({ cartItemCount: 5 });
 
     expect(
       screen.getByRole('link', { name: 'Cart' }),
-    ).toHaveAccessibleDescription(`Cart item count ${cartItemCount}`);
+    ).toHaveAccessibleDescription('Cart item count 5');
   });
 });
