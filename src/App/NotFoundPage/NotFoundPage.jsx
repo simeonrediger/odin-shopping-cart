@@ -17,8 +17,8 @@ export default function NotFoundPage() {
           Page not found
         </h2>
         <p>
-          You are trying to access an invalid URL. Try navigating the site using
-          the links above.
+          This page doesn't exist. Try navigating the site using the links
+          above.
         </p>
       </section>
     </div>
