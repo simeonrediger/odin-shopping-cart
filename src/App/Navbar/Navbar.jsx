@@ -30,7 +30,11 @@ export default function Navbar({ cartItemCount }) {
           >
             <span id="cart-link-name">Cart</span>
             {cartItemCount > 0 && (
-              <p className={styles.cartItemCount} aria-hidden="true">
+              <p
+                className={styles.cartItemCount}
+                aria-hidden="true"
+                title={`${cartItemCount} item${cartItemCount === 1 ? '' : 's'}`}
+              >
                 {cartItemCount < 100 ? cartItemCount : '99+'}
               </p>
             )}
