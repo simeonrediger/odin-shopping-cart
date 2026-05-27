@@ -15,26 +15,28 @@ function renderNavbar(props) {
   );
 }
 
-describe('gives the .active class', () => {
-  it.each([
-    { name: 'Home', path: '/' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Cart', path: '/cart' },
-  ])('to $name link at path $path', ({ path, name }) => {
-    renderAppAtPath(path);
+describe('.active class', () => {
+  describe('is given to', () => {
+    it.each([
+      { name: 'Home', path: '/' },
+      { name: 'Shop', path: '/shop' },
+      { name: 'Cart', path: '/cart' },
+    ])('$name link at path $path', ({ path, name }) => {
+      renderAppAtPath(path);
 
-    expect(screen.getByRole('link', { name })).toHaveClass(styles.active);
+      expect(screen.getByRole('link', { name })).toHaveClass(styles.active);
+    });
   });
-});
 
-describe("doesn't give the .active class", () => {
-  it.each([
-    { name: 'Home', path: '/shop' },
-    { name: 'Shop', path: '/' },
-  ])('to $name link at path $path', ({ path, name }) => {
-    renderAppAtPath(path);
+  describe('is not given to', () => {
+    it.each([
+      { name: 'Home', path: '/shop' },
+      { name: 'Shop', path: '/' },
+    ])('$name link at path $path', ({ path, name }) => {
+      renderAppAtPath(path);
 
-    expect(screen.getByRole('link', { name })).not.toHaveClass(styles.active);
+      expect(screen.getByRole('link', { name })).not.toHaveClass(styles.active);
+    });
   });
 });
 
