@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+import {
+  formatRate,
+  getStarsString,
+} from '/src/domains/product/product-utils.js';
+
 import styles from './ProductCard.module.css';
 import Price from '/src/components/Price/Price.jsx';
 import QuantityInput from '/src/components/QuantityInput/QuantityInput.jsx';
@@ -63,15 +68,4 @@ export default function ProductCard({
       </button>
     </article>
   );
-}
-
-function formatRate(rate) {
-  const [integerPart = '0', decimalPart = '0'] = String(rate).split('.');
-  return `${integerPart}.${decimalPart}`;
-}
-
-function getStarsString(starAmount) {
-  const roundedStarAmount = Math.round(starAmount);
-  const hollowStarAmount = 5 - roundedStarAmount;
-  return '★'.repeat(roundedStarAmount) + '☆'.repeat(hollowStarAmount);
 }
