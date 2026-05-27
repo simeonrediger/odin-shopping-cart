@@ -4,6 +4,7 @@ import {
   MAX_QUANTITY_PER_ITEM,
   getMaxItemQuantity,
   getCurrentItemQuantity,
+  cartHasItem,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -29,5 +30,31 @@ describe('getCurrentItemQuantity()', () => {
     const productId = 3;
 
     expect(getCurrentItemQuantity(cart, productId)).toBe(0);
+  });
+});
+
+describe('cartHasItem()', () => {
+  it('returns true when cart has the item', () => {
+    const cart = new Map();
+    cart.set(1, 1);
+    const productId = 1;
+
+    expect(cartHasItem(cart, productId)).toBe(true);
+  });
+
+  it('returns false when cart does not have the item', () => {
+    const cart = new Map();
+    cart.set(1, 3);
+    const productId = 2;
+
+    expect(cartHasItem(cart, productId)).toBe(false);
+  });
+
+  it('returns false when cart has the item with a quantity of 0', () => {
+    const cart = new Map();
+    cart.set(1, 0);
+    const productId = 1;
+
+    expect(cartHasItem(cart, productId)).toBe(false);
   });
 });
