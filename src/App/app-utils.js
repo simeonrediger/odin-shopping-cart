@@ -13,7 +13,7 @@ export function cartHasItem(cart, productId) {
 }
 
 export function cartIsEmpty(cart) {
-  return cart.size === 0;
+  return cart.size === 0 || getCartItemTotal(cart) === 0;
 }
 
 export function getCartItemTotal(cart) {
