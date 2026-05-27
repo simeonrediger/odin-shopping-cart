@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import {
   MAX_QUANTITY_PER_ITEM,
@@ -10,6 +10,7 @@ import {
   getCartPriceTotal,
   regulateQuantity,
   regulateQuantityToAdd,
+  onAddToCart,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -177,5 +178,53 @@ describe('regulateQuantityToAdd()', () => {
     cart.set(productId, MAX_QUANTITY_PER_ITEM);
 
     expect(regulateQuantityToAdd(cart, productId, 1)).toBe(0);
+  });
+});
+
+describe('onAddToCart()', () => {
+  const productId = 1;
+  const quantityToAdd = 1;
+
+  it('does not update the existing cart instance', () => {
+    const cart = new Map();
+    const setCart = vi.fn();
+
+    onAddToCart(cart, setCart, productId, quantityToAdd);
+
+    expect(setCart).not.toHaveBeenCalledWith([cart]);
+  });
+
+  it('updates the cart item quantity with the correct new quantity', () => {
+    const cart = new Map();
+    cart.set(productId, 5);
+    const setCart = vi.fn();
+
+    onAddToCart(cart, setCart, productId, quantityToAdd);
+
+    const newCart = setCart.mock.calls[0][0];
+    const newQuantity = newCart.get(productId);
+    expect(newQuantity).toBe(6);
+  });
+
+  describe('return value', () => {
+    it('is true when the cart item has reached the maximum quantity', () => {
+      let cart = new Map();
+      cart.set(productId, MAX_QUANTITY_PER_ITEM - quantityToAdd);
+      const setCart = newCart => (cart = newCart);
+
+      const result = onAddToCart(cart, setCart, productId, quantityToAdd);
+
+      expect(result).toBe(true);
+    });
+
+    it('is false when the cart item is less than the maximum quantity', () => {
+      let cart = new Map();
+      cart.set(productId, MAX_QUANTITY_PER_ITEM - quantityToAdd - 1);
+      const setCart = newCart => (cart = newCart);
+
+      const result = onAddToCart(cart, setCart, productId, quantityToAdd);
+
+      expect(result).toBe(false);
+    });
   });
 });
