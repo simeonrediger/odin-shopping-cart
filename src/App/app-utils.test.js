@@ -8,6 +8,7 @@ import {
   cartIsEmpty,
   getCartItemTotal,
   getCartPriceTotal,
+  regulateQuantity,
 } from './app-utils.js';
 
 describe('getMaxItemQuantity()', () => {
@@ -125,5 +126,27 @@ describe('getCartPriceTotal()', () => {
 
       expect(getCartPriceTotal(cart, products)).toBe(0);
     });
+  });
+});
+
+describe('regulateQuantity()', () => {
+  describe('rounds non-integer quantity to nearest integer', () => {
+    it('when decimal part is less than 0.5', () => {
+      expect(regulateQuantity(43.4)).toBe(43);
+    });
+
+    it('when decimal part is at least 0.5', () => {
+      expect(regulateQuantity(43.5)).toBe(44);
+    });
+  });
+
+  it('returns 0 if quantity is negative', () => {
+    expect(regulateQuantity(-1)).toBe(0);
+  });
+
+  it('returns max quantity per item if quantity exceeds it', () => {
+    expect(regulateQuantity(MAX_QUANTITY_PER_ITEM + 1)).toBe(
+      MAX_QUANTITY_PER_ITEM,
+    );
   });
 });
