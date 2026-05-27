@@ -9,7 +9,7 @@ export function getCurrentItemQuantity(cart, productId) {
 }
 
 export function cartHasItem(cart, productId) {
-  return cart.has(productId);
+  return cart.get(productId) > 0;
 }
 
 export function cartIsEmpty(cart) {
