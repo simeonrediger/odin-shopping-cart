@@ -1,11 +1,18 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
 
 import renderAppAtPath from '/tests/test-utils/render-app-at-path';
 
 import Navbar from './Navbar.jsx';
 import styles from './Navbar.module.css';
+
+vi.mock('/src/hooks/useProducts.js', () => ({
+  default: vi
+    .fn()
+    .mockReturnValue({ products: [], loading: false, error: null }),
+}));
 
 function renderNavbar(props) {
   return render(
@@ -80,4 +87,25 @@ describe("Cart item count in 'Cart' link", () => {
       screen.getByRole('link', { name: 'Cart' }),
     ).toHaveAccessibleDescription('Cart item count 5');
   });
+});
+
+describe('Links navigate to correct locations', () => {
+  it.each([
+    { name: 'Home', initialPath: '/shop' },
+    { name: 'Shop', initialPath: '/cart' },
+    { name: 'Cart', initialPath: '/' },
+  ])(
+    'Clicking $name navigates to the page with that route heading',
+    async ({ name, initialPath }) => {
+      const user = userEvent.setup();
+
+      renderAppAtPath(initialPath);
+
+      const link = screen.getByRole('link', { name });
+      await user.click(link);
+
+      const routeHeading = screen.getByRole('heading', { name });
+      expect(routeHeading).toBeInTheDocument();
+    },
+  );
 });
