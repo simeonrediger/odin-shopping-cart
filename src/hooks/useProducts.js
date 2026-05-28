@@ -27,10 +27,7 @@ export default function useProducts() {
 
         setProducts(data);
       })
-      .catch(error => {
-        console.error(error);
-        setError(error);
-      })
+      .catch(setError)
       .finally(() => {
         setLoading(false);
       });
