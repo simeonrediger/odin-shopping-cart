@@ -29,10 +29,10 @@ export default function useProducts() {
       })
       .catch(error => {
         console.error(error);
-        setError?.(error);
+        setError(error);
       })
       .finally(() => {
-        setLoading?.(false);
+        setLoading(false);
       });
   }, []);
 
