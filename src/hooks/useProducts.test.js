@@ -42,3 +42,22 @@ it('loads products successfully', async () => {
   expect(result.current.loading).toBe(false);
   expect(result.current.error).toBe(null);
 });
+
+it('handles HTTP errors', async () => {
+  stubFetch({ ok: false, status: 500, statusText: 'Internal Server Error' });
+
+  const { result } = renderHook(() => useProducts());
+
+  expect(result.current.loading).toBe(true);
+  expect(result.current.error).toBe(null);
+  expect(result.current.products).toEqual([]);
+
+  await waitFor(() => {
+    expect(result.current.error).toEqual(
+      new Error('HTTP 500: Internal Server Error'),
+    );
+  });
+
+  expect(result.current.loading).toBe(false);
+  expect(result.current.products).toEqual([]);
+});
