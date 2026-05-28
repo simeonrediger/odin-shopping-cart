@@ -69,6 +69,14 @@ describe('renders the correct number of cart item rows', () => {
   });
 });
 
+it('shows a message if the cart is empty', () => {
+  renderCartWithAppContext({
+    cartIsEmpty: vi.fn().mockReturnValue(true),
+  });
+
+  expect(screen.getByText('No items in cart')).toBeInTheDocument();
+});
+
 it('sets document title', () => {
   document.title = 'Initial Title';
 
