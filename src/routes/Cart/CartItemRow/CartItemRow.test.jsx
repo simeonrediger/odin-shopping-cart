@@ -36,3 +36,13 @@ it('shows product name', () => {
 
   expect(screen.getByText(product.title)).toBeInTheDocument();
 });
+
+it('shows product image', () => {
+  const product = createProduct();
+
+  renderCartItemRow(product);
+  const productImage = screen.getByRole('img', { name: product.title });
+
+  expect(productImage).toBeInTheDocument();
+  expect(productImage).toHaveAttribute('src', product.image);
+});
