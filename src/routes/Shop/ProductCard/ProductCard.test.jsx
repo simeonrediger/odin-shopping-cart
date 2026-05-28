@@ -29,3 +29,13 @@ it('shows product name', () => {
     screen.getByRole('heading', { name: product.title }),
   ).toBeInTheDocument();
 });
+
+it('shows product image', () => {
+  const product = createProduct();
+
+  render(<ProductCard {...product} {...context} />);
+  const productImage = screen.getByRole('img', { name: product.title });
+
+  expect(productImage).toBeInTheDocument();
+  expect(productImage).toHaveAttribute('src', product.image);
+});
