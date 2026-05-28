@@ -61,3 +61,21 @@ it('handles HTTP errors', async () => {
   expect(result.current.loading).toBe(false);
   expect(result.current.products).toEqual([]);
 });
+
+it('handles empty product lists', async () => {
+  const products = [];
+  stubFetch({ products });
+
+  const { result } = renderHook(() => useProducts());
+
+  expect(result.current.loading).toBe(true);
+  expect(result.current.error).toBe(null);
+  expect(result.current.products).toEqual([]);
+
+  await waitFor(() => {
+    expect(result.current.error).toEqual(new Error('No products available'));
+  });
+
+  expect(result.current.loading).toBe(false);
+  expect(result.current.products).toEqual([]);
+});
