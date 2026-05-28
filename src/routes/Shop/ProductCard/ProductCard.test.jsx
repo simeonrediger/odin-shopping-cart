@@ -14,8 +14,8 @@ function createProduct() {
 }
 
 const context = Object.freeze({
-  getMaxItemQuantity: vi.fn(),
-  getCurrentItemQuantity: vi.fn(),
+  getMaxItemQuantity: vi.fn().mockReturnValue(100),
+  getCurrentItemQuantity: vi.fn().mockReturnValue(0),
   regulateQuantityToAdd: vi.fn(),
   onAddToCart: vi.fn(),
 });
