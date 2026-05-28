@@ -41,7 +41,7 @@ export default function ProductCard({
   return (
     <article className={styles.card}>
       <a href="#" className={styles.link} title={title}>
-        <img className={styles.image} src={image} alt="" />
+        <img className={styles.image} src={image} alt={title} />
         <h3 className={styles.name}>{title}</h3>
       </a>
       <p className={styles.ratings}>
