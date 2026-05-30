@@ -54,6 +54,22 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(1);
   });
+
+  it('has a value of 0 after adding to cart if maximum reached', async () => {
+    const user = userEvent.setup();
+    const cart = new Map();
+    cart.set(product.id, MAX_QUANTITY_PER_ITEM - 1);
+
+    renderApp(['/shop'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const addToCartButton = screen.getByRole('button', {
+      name: /add to cart/i,
+    });
+
+    await user.click(addToCartButton);
+
+    expect(numberInput).toHaveDisplayValue(0);
+  });
 });
 
 describe('Increment button', () => {
