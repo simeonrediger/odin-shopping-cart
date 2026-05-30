@@ -100,6 +100,16 @@ describe('Increment button', () => {
 
     expect(numberInput).toHaveDisplayValue(initialQuantity);
   });
+
+  it('is disabled at maximum value', async () => {
+    const cart = new Map();
+    cart.set(product.id, MAX_QUANTITY_PER_ITEM);
+
+    renderApp(['/shop'], cart);
+    const incrementButton = screen.getByRole('button', { name: '+' });
+
+    expect(incrementButton).toBeDisabled();
+  });
 });
 
 describe('Decrement button', () => {
