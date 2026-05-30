@@ -17,7 +17,7 @@ import {
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
-export default function App({ children }) {
+export default function App() {
   const [cart, setCart] = useState(new Map());
 
   return (
@@ -27,25 +27,23 @@ export default function App({ children }) {
         <Navbar cartItemCount={getCartItemTotal(cart)} />
       </header>
       <main>
-        {children || (
-          <Outlet
-            context={{
-              getMaxItemQuantity,
-              getCurrentItemQuantity: productId =>
-                getCurrentItemQuantity(cart, productId),
-              cartHasItem: productId => cartHasItem(cart, productId),
-              cartIsEmpty: () => cartIsEmpty(cart),
-              getCartItemTotal: () => getCartItemTotal(cart),
-              getCartPriceTotal: products => getCartPriceTotal(cart, products),
-              regulateQuantityToAdd: (productId, quantityToAdd) =>
-                regulateQuantityToAdd(cart, productId, quantityToAdd),
-              onAddToCart: (productId, quantityToAdd) =>
-                onAddToCart(cart, setCart, productId, quantityToAdd),
-              onEditCart: (productId, quantity) =>
-                onEditCart(cart, setCart, productId, quantity),
-            }}
-          />
-        )}
+        <Outlet
+          context={{
+            getMaxItemQuantity,
+            getCurrentItemQuantity: productId =>
+              getCurrentItemQuantity(cart, productId),
+            cartHasItem: productId => cartHasItem(cart, productId),
+            cartIsEmpty: () => cartIsEmpty(cart),
+            getCartItemTotal: () => getCartItemTotal(cart),
+            getCartPriceTotal: products => getCartPriceTotal(cart, products),
+            regulateQuantityToAdd: (productId, quantityToAdd) =>
+              regulateQuantityToAdd(cart, productId, quantityToAdd),
+            onAddToCart: (productId, quantityToAdd) =>
+              onAddToCart(cart, setCart, productId, quantityToAdd),
+            onEditCart: (productId, quantity) =>
+              onEditCart(cart, setCart, productId, quantity),
+          }}
+        />
       </main>
     </div>
   );
