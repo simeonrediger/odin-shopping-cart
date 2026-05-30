@@ -50,3 +50,18 @@ describe('Increment button', () => {
     expect(numberInput).toHaveDisplayValue(initialQuantity);
   });
 });
+
+describe('Decrement button', () => {
+  it('decreases quantity by 1', async () => {
+    const user = userEvent.setup();
+
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const initialQuantity = +numberInput.value;
+    const decrementButton = screen.getByRole('button', { name: '\u2212' });
+
+    await user.click(decrementButton);
+
+    expect(numberInput).toHaveDisplayValue(initialQuantity - 1);
+  });
+});
