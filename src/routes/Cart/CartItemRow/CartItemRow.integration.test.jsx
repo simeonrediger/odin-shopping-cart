@@ -111,3 +111,12 @@ describe('Delete button', () => {
     expect(productName).not.toBeInTheDocument();
   });
 });
+
+it('Item subtotal is correct', () => {
+  const cart = new Map();
+  cart.set(product.id, 3);
+
+  renderApp(['/cart'], cart);
+
+  expect(screen.queryAllByText('$32.97')[0]).toBeInTheDocument();
+});
