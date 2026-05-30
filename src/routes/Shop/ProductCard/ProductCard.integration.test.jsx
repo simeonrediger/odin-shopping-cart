@@ -111,6 +111,22 @@ describe('Quantity input', () => {
   });
 });
 
+describe('Increment button', () => {
+  it("doesn't increase value beyond maximum addable to cart", async () => {
+    const user = userEvent.setup();
+    const cart = new Map();
+    cart.set(product.id, MAX_QUANTITY_PER_ITEM - 1);
+
+    renderApp(['/shop'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const incrementButton = screen.getByRole('button', { name: '+' });
+
+    await user.click(incrementButton);
+
+    expect(numberInput).toHaveDisplayValue(1);
+  });
+});
+
 describe('Decrement button', () => {
   it("doesn't decrease value below 0", async () => {
     const user = userEvent.setup();
