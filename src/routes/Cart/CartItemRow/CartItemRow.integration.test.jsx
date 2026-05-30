@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import renderApp from '/tests/test-utils/render-app.jsx';
+import { MAX_QUANTITY_PER_ITEM } from '/src/domains/cart/cart-constants.js';
 
 const product = vi.hoisted(() => ({
   id: 1,
@@ -58,5 +59,21 @@ describe('Quantity input', () => {
     await user.paste('-3');
 
     expect(numberInput).toHaveDisplayValue(1);
+  });
+
+  it('has maximum value if an even greater value is provided', async () => {
+    const user = userEvent.setup();
+    const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
+    const cart = new Map();
+    cart.set(product.id, 5);
+
+    renderApp(['/cart'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    await user.click(numberInput);
+    await user.keyboard(`{${modKey}>}a{/${modKey}}`);
+    await user.paste(String(MAX_QUANTITY_PER_ITEM + 1));
+
+    expect(numberInput).toHaveDisplayValue(MAX_QUANTITY_PER_ITEM);
   });
 });
