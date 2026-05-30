@@ -95,6 +95,20 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(0);
   });
+
+  it('has maximum value if an even greater value is provided', async () => {
+    const user = userEvent.setup();
+    const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
+
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    await user.click(numberInput);
+    await user.keyboard(`{${modKey}>}a{/${modKey}}`);
+    await user.paste(String(MAX_QUANTITY_PER_ITEM + 1));
+
+    expect(numberInput).toHaveDisplayValue(MAX_QUANTITY_PER_ITEM);
+  });
 });
 
 describe('Increment button', () => {
