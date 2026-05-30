@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import renderApp from '/tests/test-utils/render-app.jsx';
 
@@ -28,5 +29,18 @@ describe('Quantity input', () => {
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
 
     expect(numberInput).toHaveDisplayValue(5);
+  });
+
+  it('has a value of 1 if cleared', async () => {
+    const user = userEvent.setup();
+    const cart = new Map();
+    cart.set(product.id, 5);
+
+    renderApp(['/cart'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    await user.clear(numberInput);
+
+    expect(numberInput).toHaveDisplayValue(1);
   });
 });
