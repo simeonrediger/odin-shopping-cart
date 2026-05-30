@@ -31,7 +31,7 @@ vi.mock('/src/hooks/useProducts.js', () => ({
 }));
 
 describe('Quantity input', () => {
-  it('starts with cart item quantity as value', () => {
+  it("starts with cart item's quantity as value", () => {
     const cart = new Map();
     cart.set(products[0].id, 5);
 
