@@ -141,4 +141,14 @@ describe('Decrement button', () => {
 
     expect(numberInput).toHaveDisplayValue(0);
   });
+
+  it('is disabled at minimum value', async () => {
+    const cart = new Map();
+    cart.set(product.id, MAX_QUANTITY_PER_ITEM);
+
+    renderApp(['/shop'], cart);
+    const decrementButton = screen.getByRole('button', { name: '\u2212' });
+
+    expect(decrementButton).toBeDisabled();
+  });
 });
