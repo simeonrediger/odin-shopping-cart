@@ -70,6 +70,17 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(0);
   });
+
+  it('has minimum value if cleared', async () => {
+    const user = userEvent.setup();
+
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    await user.clear(numberInput);
+
+    expect(numberInput).toHaveDisplayValue(0);
+  });
 });
 
 describe('Increment button', () => {
