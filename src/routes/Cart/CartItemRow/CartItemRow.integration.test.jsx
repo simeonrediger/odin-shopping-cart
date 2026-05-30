@@ -93,3 +93,21 @@ describe('Decrement button', () => {
     expect(numberInput).toHaveDisplayValue(1);
   });
 });
+
+describe('Delete button', () => {
+  it('removes the item from the cart', async () => {
+    const user = userEvent.setup();
+    const cart = new Map();
+    cart.set(product.id, 3);
+
+    renderApp(['/cart'], cart);
+    const productName = screen.getByText(product.title);
+    const deleteButton = screen.getByRole('button', { name: 'Delete' });
+
+    expect(productName).toBeInTheDocument();
+
+    await user.click(deleteButton);
+
+    expect(productName).not.toBeInTheDocument();
+  });
+});
