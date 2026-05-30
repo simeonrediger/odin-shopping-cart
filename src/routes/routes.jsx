@@ -4,29 +4,33 @@ import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
 import NotFoundPage from '../App/NotFoundPage/NotFoundPage.jsx';
 
-const routes = [
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: 'shop',
-        element: <Shop />,
-      },
-      {
-        path: 'cart',
-        element: <Cart />,
-      },
-      {
-        path: '*',
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-];
+export function createRoutes(initialCart) {
+  return [
+    {
+      path: '/',
+      element: <App initialCart={initialCart} />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: 'shop',
+          element: <Shop />,
+        },
+        {
+          path: 'cart',
+          element: <Cart />,
+        },
+        {
+          path: '*',
+          element: <NotFoundPage />,
+        },
+      ],
+    },
+  ];
+}
+
+const routes = createRoutes();
 
 export default routes;

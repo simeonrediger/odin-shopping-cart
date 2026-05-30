@@ -17,8 +17,8 @@ import {
 import Navbar from './Navbar/Navbar.jsx';
 import styles from './App.module.css';
 
-export default function App() {
-  const [cart, setCart] = useState(new Map());
+export default function App({ initialCart = new Map() }) {
+  const [cart, setCart] = useState(initialCart);
 
   return (
     <div className={styles.root}>
