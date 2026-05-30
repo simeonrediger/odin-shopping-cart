@@ -77,3 +77,19 @@ describe('Quantity input', () => {
     expect(numberInput).toHaveDisplayValue(MAX_QUANTITY_PER_ITEM);
   });
 });
+
+describe('Decrement button', () => {
+  it("doesn't decrease value below 1", async () => {
+    const user = userEvent.setup();
+    const cart = new Map();
+    cart.set(product.id, 1);
+
+    renderApp(['/cart'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const decrementButton = screen.getByRole('button', { name: '\u2212' });
+
+    await user.click(decrementButton);
+
+    expect(numberInput).toHaveDisplayValue(1);
+  });
+});
