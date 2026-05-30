@@ -36,9 +36,9 @@ describe('Quantity input', () => {
     cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
-    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const input = screen.getByRole('spinbutton', { name: 'Quantity' });
 
-    expect(numberInput).toHaveDisplayValue(5);
+    expect(input).toHaveDisplayValue(5);
   });
 
   it('has a value of 1 if cleared', async () => {
@@ -47,11 +47,11 @@ describe('Quantity input', () => {
     cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
-    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const input = screen.getByRole('spinbutton', { name: 'Quantity' });
 
-    await user.clear(numberInput);
+    await user.clear(input);
 
-    expect(numberInput).toHaveDisplayValue(1);
+    expect(input).toHaveDisplayValue(1);
   });
 
   it('has a value of 1 if an even lower value is provided', async () => {
@@ -61,13 +61,13 @@ describe('Quantity input', () => {
     cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
-    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const input = screen.getByRole('spinbutton', { name: 'Quantity' });
 
-    await user.click(numberInput);
+    await user.click(input);
     await user.keyboard(`{${modKey}>}a{/${modKey}}`);
     await user.paste('-3');
 
-    expect(numberInput).toHaveDisplayValue(1);
+    expect(input).toHaveDisplayValue(1);
   });
 
   it('has maximum value if an even greater value is provided', async () => {
@@ -77,13 +77,13 @@ describe('Quantity input', () => {
     cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
-    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const input = screen.getByRole('spinbutton', { name: 'Quantity' });
 
-    await user.click(numberInput);
+    await user.click(input);
     await user.keyboard(`{${modKey}>}a{/${modKey}}`);
     await user.paste(String(MAX_QUANTITY_PER_ITEM + 1));
 
-    expect(numberInput).toHaveDisplayValue(MAX_QUANTITY_PER_ITEM);
+    expect(input).toHaveDisplayValue(MAX_QUANTITY_PER_ITEM);
   });
 });
 
@@ -94,12 +94,12 @@ describe('Decrement button', () => {
     cart.set(products[0].id, 1);
 
     renderApp(['/cart'], cart);
-    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const quantityInput = screen.getByRole('spinbutton', { name: 'Quantity' });
     const decrementButton = screen.getByRole('button', { name: '\u2212' });
 
     await user.click(decrementButton);
 
-    expect(numberInput).toHaveDisplayValue(1);
+    expect(quantityInput).toHaveDisplayValue(1);
   });
 });
 
