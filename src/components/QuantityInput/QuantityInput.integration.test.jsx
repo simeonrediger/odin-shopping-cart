@@ -81,6 +81,20 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(0);
   });
+
+  it('has minimum value if an even lower value is provided', async () => {
+    const user = userEvent.setup();
+    const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
+
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    await user.click(numberInput);
+    await user.keyboard(`{${modKey}>}a{/${modKey}}`);
+    await user.paste('-3');
+
+    expect(numberInput).toHaveDisplayValue(0);
+  });
 });
 
 describe('Increment button', () => {
