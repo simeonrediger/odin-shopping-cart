@@ -28,6 +28,16 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(1);
   });
+
+  it('starts with a value of 0 if max quantity in cart reached', () => {
+    const cart = new Map();
+    cart.set(product.id, MAX_QUANTITY_PER_ITEM);
+
+    renderApp(['/shop'], cart);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    expect(numberInput).toHaveDisplayValue(0);
+  });
 });
 
 describe('Increment button', () => {
