@@ -95,7 +95,7 @@ describe('Links navigate to correct locations', () => {
     { name: 'Shop', initialPath: '/cart' },
     { name: 'Cart', initialPath: '/' },
   ])(
-    'Clicking $name navigates to the page with that route heading',
+    'Clicking $name navigates to the page with the $name route heading',
     async ({ name, initialPath }) => {
       const user = userEvent.setup();
 
