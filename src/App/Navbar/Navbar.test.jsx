@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
 
-import renderAppAtPath from '/tests/test-utils/render-app-at-path';
+import renderAppStub from '/tests/test-utils/render-app-stub.jsx';
 
 import Navbar from './Navbar.jsx';
 import styles from './Navbar.module.css';
@@ -29,7 +29,7 @@ describe('.active class', () => {
       { name: 'Shop', path: '/shop' },
       { name: 'Cart', path: '/cart' },
     ])('$name link at path $path', ({ path, name }) => {
-      renderAppAtPath(path);
+      renderAppStub(path);
 
       expect(screen.getByRole('link', { name })).toHaveClass(styles.active);
     });
@@ -40,7 +40,7 @@ describe('.active class', () => {
       { name: 'Home', path: '/shop' },
       { name: 'Shop', path: '/' },
     ])('$name link at path $path', ({ path, name }) => {
-      renderAppAtPath(path);
+      renderAppStub(path);
 
       expect(screen.getByRole('link', { name })).not.toHaveClass(styles.active);
     });
@@ -99,7 +99,7 @@ describe('Links navigate to correct locations', () => {
     async ({ name, initialPath }) => {
       const user = userEvent.setup();
 
-      renderAppAtPath(initialPath);
+      renderAppStub(initialPath);
 
       const link = screen.getByRole('link', { name });
       await user.click(link);

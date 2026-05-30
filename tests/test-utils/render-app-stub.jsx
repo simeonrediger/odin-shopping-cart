@@ -6,7 +6,7 @@ import Home from '/src/routes/Home/Home.jsx';
 import Shop from '/src/routes/Shop/Shop.jsx';
 import Cart from '/src/routes/Cart/Cart.jsx';
 
-export default function renderAppAtPath(path) {
+export default function renderAppStub(path) {
   const Stub = createRoutesStub([
     {
       path: '/',
