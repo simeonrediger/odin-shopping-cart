@@ -21,6 +21,15 @@ vi.mock('/src/hooks/useProducts.js', () => ({
   }),
 }));
 
+describe('Number input', () => {
+  it('starts with a value of 1', () => {
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    expect(numberInput).toHaveDisplayValue(1);
+  });
+});
+
 describe('Increment button', () => {
   it('increases quantity by 1', async () => {
     const user = userEvent.setup();
