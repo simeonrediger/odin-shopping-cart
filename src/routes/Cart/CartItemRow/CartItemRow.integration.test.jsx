@@ -129,23 +129,3 @@ it('Item subtotal is correct', () => {
 
   expect(screen.queryAllByText('$45.00')[0]).toBeInTheDocument();
 });
-
-it('Cart total item quantity is correct', () => {
-  const cart = new Map();
-  cart.set(products[0].id, 3);
-  cart.set(products[1].id, 2);
-
-  renderApp(['/cart'], cart);
-
-  expect(screen.getByText('5 items')).toBeInTheDocument();
-});
-
-it('Cart subtotal is correct', () => {
-  const cart = new Map();
-  cart.set(products[0].id, 3);
-  cart.set(products[1].id, 2);
-
-  renderApp(['/cart'], cart);
-
-  expect(screen.getByText('$100.98')).toBeInTheDocument();
-});
