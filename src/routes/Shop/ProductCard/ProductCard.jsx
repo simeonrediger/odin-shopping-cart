@@ -20,9 +20,10 @@ export default function ProductCard({
   regulateQuantityToAdd,
   onAddToCart,
 }) {
-  const maxQuantityReached = getCurrentItemQuantity(id) < getMaxItemQuantity();
+  const maxQuantityReached =
+    getCurrentItemQuantity(id) === getMaxItemQuantity();
   const [quantityToAdd, setQuantityToAdd] = useState(
-    maxQuantityReached ? 1 : 0,
+    maxQuantityReached ? 0 : 1,
   );
 
   const formattedRate = formatRate(rating.rate);
