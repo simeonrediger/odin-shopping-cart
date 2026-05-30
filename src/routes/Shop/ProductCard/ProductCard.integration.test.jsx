@@ -144,3 +144,29 @@ describe('Decrement button', () => {
     expect(quantityInput).toHaveDisplayValue(0);
   });
 });
+
+describe("'Add to cart' button", () => {
+  it('adds specified quantity of item to the cart', async () => {
+    const user = userEvent.setup();
+    const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
+
+    renderApp(['/shop']);
+    const quantityToAddInput = screen.getByRole('spinbutton', {
+      name: 'Quantity',
+    });
+    const addToCartButton = screen.getByRole('button', { name: 'Add to cart' });
+    const cartLink = screen.getByRole('link', { name: 'Cart' });
+
+    await user.click(quantityToAddInput);
+    await user.keyboard(`{${modKey}>}a{/${modKey}}`);
+    await user.paste('5');
+    await user.click(addToCartButton);
+    await user.click(cartLink);
+
+    const productName = screen.getByText(product.title);
+    const quantityInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+
+    expect(productName).toBeInTheDocument();
+    expect(quantityInput).toHaveDisplayValue(5);
+  });
+});
