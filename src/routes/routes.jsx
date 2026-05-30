@@ -2,7 +2,7 @@ import App from '../App/App.jsx';
 import Home from './Home/Home.jsx';
 import Shop from './Shop/Shop.jsx';
 import Cart from './Cart/Cart.jsx';
-import NotFoundPage from '../App/NotFoundPage/NotFoundPage.jsx';
+import NotFoundPage from './NotFoundPage/NotFoundPage.jsx';
 
 export function createRoutes(initialCart) {
   return [
