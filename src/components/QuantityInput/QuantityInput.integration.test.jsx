@@ -38,6 +38,22 @@ describe('Number input', () => {
 
     expect(numberInput).toHaveDisplayValue(0);
   });
+
+  it('has a value of 1 after adding to cart', async () => {
+    const user = userEvent.setup();
+
+    renderApp(['/shop']);
+    const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
+    const incrementButton = screen.getByRole('button', { name: '+' });
+    const addToCartButton = screen.getByRole('button', {
+      name: /add to cart/i,
+    });
+
+    await user.click(incrementButton);
+    await user.click(addToCartButton);
+
+    expect(numberInput).toHaveDisplayValue(1);
+  });
 });
 
 describe('Increment button', () => {
