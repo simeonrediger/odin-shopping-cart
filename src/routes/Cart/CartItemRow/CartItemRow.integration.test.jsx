@@ -5,26 +5,35 @@ import userEvent from '@testing-library/user-event';
 import renderApp from '/tests/test-utils/render-app.jsx';
 import { MAX_QUANTITY_PER_ITEM } from '/src/domains/cart/cart-constants.js';
 
-const product = vi.hoisted(() => ({
-  id: 1,
-  title: 'Product 1',
-  price: 10.99,
-  rating: { rate: 4.1, count: 256 },
-  image: 'https://example.com/image.png',
-}));
+const products = vi.hoisted(() => [
+  {
+    id: 1,
+    title: 'Product 1',
+    price: 15.0,
+    rating: { rate: 4.1, count: 256 },
+    image: 'https://example.com/product-1.png',
+  },
+  {
+    id: 2,
+    title: 'Product 2',
+    price: 27.99,
+    rating: { rate: 3.5, count: 40 },
+    image: 'https://example.com/product-2.png',
+  },
+]);
 
 vi.mock('/src/hooks/useProducts.js', () => ({
   default: vi.fn().mockReturnValue({
     loading: false,
     error: null,
-    products: [product],
+    products,
   }),
 }));
 
 describe('Quantity input', () => {
   it('starts with cart item quantity as value', () => {
     const cart = new Map();
-    cart.set(product.id, 5);
+    cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
@@ -35,7 +44,7 @@ describe('Quantity input', () => {
   it('has a value of 1 if cleared', async () => {
     const user = userEvent.setup();
     const cart = new Map();
-    cart.set(product.id, 5);
+    cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
@@ -49,7 +58,7 @@ describe('Quantity input', () => {
     const user = userEvent.setup();
     const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
     const cart = new Map();
-    cart.set(product.id, 5);
+    cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
@@ -65,7 +74,7 @@ describe('Quantity input', () => {
     const user = userEvent.setup();
     const modKey = navigator.platform.includes('Mac') ? 'Meta' : 'Control';
     const cart = new Map();
-    cart.set(product.id, 5);
+    cart.set(products[0].id, 5);
 
     renderApp(['/cart'], cart);
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
@@ -82,7 +91,7 @@ describe('Decrement button', () => {
   it("doesn't decrease value below 1", async () => {
     const user = userEvent.setup();
     const cart = new Map();
-    cart.set(product.id, 1);
+    cart.set(products[0].id, 1);
 
     renderApp(['/cart'], cart);
     const numberInput = screen.getByRole('spinbutton', { name: 'Quantity' });
@@ -98,10 +107,10 @@ describe('Delete button', () => {
   it('removes the item from the cart', async () => {
     const user = userEvent.setup();
     const cart = new Map();
-    cart.set(product.id, 3);
+    cart.set(products[0].id, 3);
 
     renderApp(['/cart'], cart);
-    const productName = screen.getByText(product.title);
+    const productName = screen.getByText(products[0].title);
     const deleteButton = screen.getByRole('button', { name: 'Delete' });
 
     expect(productName).toBeInTheDocument();
@@ -114,9 +123,9 @@ describe('Delete button', () => {
 
 it('Item subtotal is correct', () => {
   const cart = new Map();
-  cart.set(product.id, 3);
+  cart.set(products[0].id, 3);
 
   renderApp(['/cart'], cart);
 
-  expect(screen.queryAllByText('$32.97')[0]).toBeInTheDocument();
+  expect(screen.queryAllByText('$45.00')[0]).toBeInTheDocument();
 });
