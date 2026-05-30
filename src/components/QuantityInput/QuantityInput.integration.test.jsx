@@ -29,7 +29,7 @@ describe('Number input', () => {
     expect(numberInput).toHaveDisplayValue(1);
   });
 
-  it('starts with a value of 0 if max quantity in cart reached', () => {
+  it('starts with a value of 0 if maximum is in cart', () => {
     const cart = new Map();
     cart.set(product.id, MAX_QUANTITY_PER_ITEM);
 
@@ -73,7 +73,7 @@ describe('Number input', () => {
 });
 
 describe('Increment button', () => {
-  it('increases quantity by 1', async () => {
+  it('increases value by 1', async () => {
     const user = userEvent.setup();
 
     renderApp(['/shop']);
@@ -86,7 +86,7 @@ describe('Increment button', () => {
     expect(numberInput).toHaveDisplayValue(initialQuantity + 1);
   });
 
-  it("doesn't increase quantity beyond maximum", async () => {
+  it("doesn't increase value beyond its maximum", async () => {
     const user = userEvent.setup();
     const cart = new Map();
     cart.set(product.id, MAX_QUANTITY_PER_ITEM);
@@ -113,7 +113,7 @@ describe('Increment button', () => {
 });
 
 describe('Decrement button', () => {
-  it('decreases quantity by 1', async () => {
+  it('decreases value by 1', async () => {
     const user = userEvent.setup();
 
     renderApp(['/shop']);
@@ -126,7 +126,7 @@ describe('Decrement button', () => {
     expect(numberInput).toHaveDisplayValue(initialQuantity - 1);
   });
 
-  it("doesn't decrease quantity below 0", async () => {
+  it("doesn't decrease value below 0", async () => {
     const user = userEvent.setup();
     const cart = new Map();
     cart.set(product.id, MAX_QUANTITY_PER_ITEM);
